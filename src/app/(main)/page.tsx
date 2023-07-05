@@ -2,13 +2,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFire } from '@fortawesome/free-solid-svg-icons'
 import ToolCard from '@/components/biz/tool-card'
 import svg from '@/assets/json.svg'
-import { asyncWait } from '@/utils'
+// import { asyncWait } from '@/utils'
 import { toolPanels } from '@/config'
 
+// import { useTheme } from 'next-themes'
+
 export default async function Home() {
-  await asyncWait(1)
+  // const { setTheme } = useTheme()
+  // await asyncWait(1)
   return (
     <main className="flex-grow-0 flex-col items-center justify-between p-6 ">
+      {/* <div onClick={() => setTheme('light')}>light</div> */}
+      {/* <div onClick={() => setTheme('dark')}>dark</div> */}
       {/* <article className="prose">
         <h1>Garlic bread with cheese: What the science tells us</h1>
         <p>
