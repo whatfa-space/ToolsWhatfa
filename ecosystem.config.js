@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: 'gpt',
+      name: 'tools',
       script: 'pnpm',
       args: 'start',
       exec_mode: 'cluster',
