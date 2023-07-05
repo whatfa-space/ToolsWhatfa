@@ -1,8 +1,14 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFire } from "@fortawesome/free-solid-svg-icons";
-export default function Home() {
+import ToolCard from "@/components/biz/tool-card";
+import svg from '@/assets/json.svg'
+import { asyncWait } from "@/utils";
+import { toolPanels } from "@/config";
+
+export default async function Home() {
+  await asyncWait(1)
   return (
-    <main className="flex-grow-0 flex-col items-center justify-between p-6 bg-base-100">
+    <main className="flex-grow-0 flex-col items-center justify-between p-6 ">
       {/* <article className="prose">
         <h1>Garlic bread with cheese: What the science tells us</h1>
         <p>
@@ -16,21 +22,26 @@ export default function Home() {
           to a series of rabies cases springing up around the country.
         </p>
       </article> */}
-      <div className="w-full bg-base-200  shadow-black mt-10 py-7 px-4 rounded-md">
-        <div className="py-1 px-3 absolute -mt-12 bg-info rounded-md text-base-100 flex items-center">
-          <FontAwesomeIcon
-          className="shrink-0"
-            icon={faFire}
-            // icon={['fal','fire']}
-            // icon="fire"
-            width={16}
-            height={16}
-            // unicode={'f058'}
-          />
-          <span className="shrink-0 ml-1">热门</span>
-        </div>
-        hello ArtBoadr
-      </div>
+      {
+        toolPanels.map(panel => (
+          <div key={panel.title} className="w-full bg-base-100 border mt-10 py-7 px-4 rounded-md  shadow-slate-200 shadow-sm grid grid-cols-3 gap-2">
+            <div className="py-1 px-3 absolute -mt-12 bg-base-100 border rounded-md text-base-content flex items-center">
+              <FontAwesomeIcon
+                className="shrink-0"
+                icon={faFire}
+                width={16}
+                height={16}
+              />
+              <span className="shrink-0 ml-1">{panel.title}</span>
+            </div>
+            {/* <ToolCard img="/icon/json.png" title="JSON" desc="JSON转typescript" /> */}
+            {panel.tools.map(tool => (
+              <ToolCard key={tool.title} img={svg} title={tool.title} desc={tool.desc} />
+            ))}
+          </div>
+        ))
+      }
+
     </main>
   );
 }
