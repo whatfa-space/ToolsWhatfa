@@ -1,5 +1,5 @@
-import { FC, memo } from "react";
-import Image from "next/image";
+import { FC, memo } from 'react'
+import Image from 'next/image'
 
 interface IToolCard {
   img: string
@@ -14,6 +14,6 @@ const ToolCard: FC<IToolCard> = ({ img, title, desc }) => (
       <p className="text-xs">{desc}</p>
     </div>
   </div>
-);
+)
 
-export default memo(ToolCard);
+export default memo(ToolCard)

@@ -1,9 +1,9 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFire } from "@fortawesome/free-solid-svg-icons";
-import ToolCard from "@/components/biz/tool-card";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFire } from '@fortawesome/free-solid-svg-icons'
+import ToolCard from '@/components/biz/tool-card'
 import svg from '@/assets/json.svg'
-import { asyncWait } from "@/utils";
-import { toolPanels } from "@/config";
+import { asyncWait } from '@/utils'
+import { toolPanels } from '@/config'
 
 export default async function Home() {
   await asyncWait(1)
@@ -43,5 +43,5 @@ export default async function Home() {
       }
 
     </main>
-  );
+  )
 }

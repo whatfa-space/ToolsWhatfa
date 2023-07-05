@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build:server": "tsc --project tsconfig.server.json",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 3001",
     "start:server": "tsc --project tsconfig.server.json && node dist/server.js",
     "lint": "next lint"
   },
