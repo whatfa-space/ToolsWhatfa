@@ -1,19 +1,29 @@
 import { FC, memo } from 'react'
-import Image from 'next/image'
+import * as Fa from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { TIcon } from '@/interface/tools'
 
 interface IToolCard {
-  img: string
+  icon: TIcon
   title: string
   desc: string
 }
-const ToolCard: FC<IToolCard> = ({ img, title, desc }) => (
-  <div className="flex items-center border bg-base-100 p-1 rounded-md active:shadow-md lg:hover:shadow-md cursor-pointer transition-shadow duration-300">
-    <Image src={img} width={30} height={30} alt={title}></Image>
-    <div className="flex flex-col">
-      <h2 className="text-sm">{title}</h2>
-      <p className="text-xs">{desc}</p>
+const ToolCard: FC<IToolCard> = ({ icon, title, desc }) => {
+  const iconC = Fa[icon]
+  return (
+    <div className="flex items-center border bg-base-100 p-1 rounded-md active:shadow-md lg:hover:shadow-md cursor-pointer transition-shadow duration-300">
+      <FontAwesomeIcon
+        className="shrink-0 m-1"
+        icon={iconC}
+        width={16}
+        height={16}
+      />
+      <div className="flex flex-col">
+        <h2 className="text-sm">{title}</h2>
+        <p className="text-xs">{desc}</p>
+      </div>
     </div>
-  </div>
-)
+  )
+}
 
 export default memo(ToolCard)
