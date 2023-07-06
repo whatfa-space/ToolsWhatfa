@@ -83,4 +83,45 @@ export const toolPanels: IToolsPanel[] = [
       },
     ],
   },
+  {
+    title: '链接',
+    icon: 'faLink',
+    tools: [
+      {
+        title: 'JSON',
+        desc: 'JSON转typescript',
+        icon: 'faCode',
+      },
+      {
+        title: 'JSON',
+        desc: 'JSON转typescript',
+        icon: 'faCode',
+      },
+      {
+        title: 'JSON',
+        desc: 'JSON转typescript',
+        icon: 'faCode',
+      },
+      {
+        title: 'JSON',
+        desc: 'JSON转typescript',
+        icon: 'faCode',
+      },
+      {
+        title: 'JSON',
+        desc: 'JSON转typescript',
+        icon: 'faCode',
+      },
+      {
+        title: 'JSON',
+        desc: 'JSON转typescript',
+        icon: 'faCode',
+      },
+      {
+        title: 'JSON',
+        desc: 'JSON转typescript',
+        icon: 'faCode',
+      },
+    ],
+  },
 ]
