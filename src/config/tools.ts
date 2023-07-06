@@ -1,4 +1,6 @@
-export const toolPanels = [
+import { IToolsPanel } from '@/interface/tools'
+
+export const toolPanels: IToolsPanel[] = [
   {
     title: '热门',
     tools: [

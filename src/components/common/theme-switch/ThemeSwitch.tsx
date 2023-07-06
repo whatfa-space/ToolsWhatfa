@@ -1,8 +1,6 @@
 'use client'
 
-import { useCallback } from 'react'
 import { useTheme } from 'next-themes'
-
 import { tv } from 'tailwind-variants'
 import { useIsClient } from '@/hooks/common/useIsClient'
 
@@ -78,8 +76,6 @@ const DarkIcon = () => (
   </svg>
 )
 
-// const mousePositionAtom = atom({ x: 0, y: 0 })
-
 const ThemeIndicator = () => {
   const { theme } = useTheme()
   const { isClient } = useIsClient()
@@ -105,7 +101,7 @@ const ButtonGroup = () => {
   return (
     <div
       role="radiogroup"
-      className="w-fit-content inline-flex rounded-full border border-slate-200 p-[3px] dark:border-neutral-800"
+      className="w-fit-content inline-flex rounded-full border p-[3px]"
     >
       <button
         aria-checked="false"

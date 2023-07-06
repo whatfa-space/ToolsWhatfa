@@ -7,7 +7,7 @@ interface IToolCard {
   desc: string
 }
 const ToolCard: FC<IToolCard> = ({ img, title, desc }) => (
-  <div className="flex items-center border bg-base-100 p-1 rounded-md hover:shadow-md cursor-pointer transition-shadow">
+  <div className="flex items-center border bg-base-100 p-1 rounded-md active:shadow-md lg:hover:shadow-md cursor-pointer transition-shadow duration-300">
     <Image src={img} width={30} height={30} alt={title}></Image>
     <div className="flex flex-col">
       <h2 className="text-sm">{title}</h2>
