@@ -8,29 +8,26 @@ import {
 export default function Header() {
   const [isSticky, setIsSticky] = useState(false)
 
-  const headerRef = useRef<HTMLElement>(null)
+  const headerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+    const cur = headerRef.current
+    if (!cur) return
+
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         console.log('observer')
-
-        if (!headerRef.current) return
         console.log('entry.isIntersecting', entry.isIntersecting)
         setIsSticky(!entry.isIntersecting)
         console.log('observer end')
       })
     })
-    if (!headerRef.current) return
-
     observer.observe(headerRef.current)
 
     return () => {
-      if (!headerRef.current) {
-        observer.unobserve(headerRef.current)
-      }
+      observer.unobserve(cur)
     }
-  }, [])
+  }, [headerRef])
   const headerClass = useMemo(() => (isSticky ? '  [backdrop-filter:saturate(180%)_blur(20px)] border-b' : ''),
     [isSticky])
   return (
