@@ -11,7 +11,7 @@ interface IToolCard {
 const ToolCard: FC<IToolCard> = ({ icon, title, desc }) => {
   const iconC = Fa[icon]
   return (
-    <div className="flex items-center border bg-base-100 p-1 rounded-md active:shadow-md lg:hover:shadow-md cursor-pointer transition-shadow duration-300">
+    <div className="flex items-center border border-neutral-content bg-base-100 p-1 rounded-md hover:shadow-md active:bg-base-200 cursor-pointer transition-shadow duration-300">
       <FontAwesomeIcon
         className="shrink-0 m-1"
         icon={iconC}

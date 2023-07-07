@@ -12,7 +12,7 @@ export const ToolsPanel:FC<ToolsPanelProps> = ({ toolsPanel }) => {
   const panelIcon = Fa[toolsPanel.icon]
 
   return (
-    <div key={toolsPanel.title} className="w-full  border mt-10 py-7 px-4 rounded-md  shadow-slate-200 shadow-sm grid grid-cols-2 md:grid-cols-3 gap-2">
+    <div key={toolsPanel.title} className="w-full  border border-neutral-content  mt-10 py-7 px-4 rounded-md  shadow-sm grid grid-cols-2 md:grid-cols-3 gap-2">
       <div className="py-1 px-3 absolute -mt-12 bg-base-100 border rounded-md text-base-content flex items-center">
         <FontAwesomeIcon
           className="shrink-0"
