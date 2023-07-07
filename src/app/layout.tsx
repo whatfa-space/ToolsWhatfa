@@ -20,8 +20,6 @@ export default function RootLayout({
   return (
 
     <html lang="zh" className="noise" data-theme="light" >
-      <head>
-      </head>
       <body className={inter.className}>
         <ClientProvider>
           <Root>
