@@ -44,7 +44,6 @@ export default function Header() {
       <header className={`${headerClass} w-full transform-gpu px-6 py-2  flex items-center justify-between fixed top-0 z-50 `}>
         {showBackBtn && <BackBtn />}
         <div className='text-xl md:text-2xl flex-1 text-center'>ToolsWhatfa - 免费工具</div>
-
       </header>
       <div ref={headerRef} ></div>
     </>
