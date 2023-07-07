@@ -29,8 +29,9 @@ export const QRcodeGen = () => {
           text={text}
           options={{
             type: 'image/jpeg',
-            quality: 0.3,
-            level: 'M',
+            quality: 0.92,
+            // level: 'M',
+            level: 'Q',
             margin: 3,
             scale: 4,
             width: 200,
