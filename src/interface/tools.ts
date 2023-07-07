@@ -5,6 +5,7 @@ export interface ITool {
   title: string
   desc: string
   icon: TIcon
+  link?: string
 }
 export interface IToolsPanel {
   title: string

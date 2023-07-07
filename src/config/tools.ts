@@ -9,6 +9,7 @@ export const toolPanels: IToolsPanel[] = [
         title: 'JSON',
         desc: 'JSON转typescript',
         icon: 'faCode',
+        link: '/json2ts',
       },
       {
         title: 'JSON',

@@ -3,15 +3,21 @@ import { IToolsPanel } from '@/interface/tools'
 import { FC } from 'react'
 import ToolCard from '../tool-card'
 
-interface ToolsPanelProps{
-  toolsPanel:IToolsPanel
+interface ToolsPanelProps {
+  toolsPanel: IToolsPanel
 }
 
-export const ToolsPanel:FC<ToolsPanelProps> = ({ toolsPanel }) => (
+export const ToolsPanel: FC<ToolsPanelProps> = ({ toolsPanel }) => (
   <TagContainer title={toolsPanel.title} icon={toolsPanel.icon} key={toolsPanel.title} className="grid grid-cols-2 gap-2 md:grid-cols-3">
     {toolsPanel.tools.map(tool => (
       // <ToolCard key={tool.title} img={svg} title={tool.title} desc={tool.desc} />
-      <ToolCard key={tool.title} icon={tool.icon} title={tool.title} desc={tool.desc} />
+      <ToolCard
+        key={tool.title}
+        // icon={tool.icon}
+        // title={tool.title}
+        // desc={tool.desc}
+        {...tool}
+      />
     ))}
   </TagContainer>
 )
