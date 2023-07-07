@@ -36,7 +36,7 @@ export default function Json2Ts() {
           <button onClick={handleConvert} className='btn btn-sm btn-neutral mr-2'>转换</button>
           <button onClick={handleCopy} className='btn btn-sm btn-neutral'>复制</button>
         </div>
-        <textarea value={tsResult} className='textarea textarea-bordered w-full h-40 md:h-56' disabled placeholder='等待转换...'></textarea>
+        <textarea value={tsResult} className='textarea textarea-bordered w-full h-40 md:h-56' readOnly placeholder='等待转换...'></textarea>
       </TagContainer>
     </div>
   )
