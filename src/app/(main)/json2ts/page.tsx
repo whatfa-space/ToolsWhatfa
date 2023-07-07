@@ -28,7 +28,7 @@ export default function Json2Ts() {
   }, [tsResult])
 
   return (
-    <div className='p-6'>
+    <main className='p-6 pt-14'>
       <TagContainer title='Json转typescript'>
         <h2 className='m-1'>在线JSON转typescript工具</h2>
         <textarea value={json} onChange={onInput} className='textarea textarea-bordered w-full h-40 md:h-56' placeholder='请输入JSON'></textarea>
@@ -38,6 +38,6 @@ export default function Json2Ts() {
         </div>
         <textarea value={tsResult} className='textarea textarea-bordered w-full h-40 md:h-56' readOnly placeholder='等待转换...'></textarea>
       </TagContainer>
-    </div>
+    </main>
   )
 }
