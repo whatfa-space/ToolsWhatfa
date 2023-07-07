@@ -7,15 +7,15 @@ export const toolPanels: IToolsPanel[] = [
     tools: [
       {
         title: 'json2ts',
-        desc: 'json转typescript',
+        desc: 'Json转typescript',
         icon: 'faCode',
         link: '/json2ts',
       },
       {
         title: 'json格式化',
-        desc: 'json格式格式化',
+        desc: 'Json格式化工具',
         icon: 'faCode',
-        link: '/json2ts',
+        link: '/jsonFormat',
       },
       {
         title: 'JSON',
