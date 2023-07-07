@@ -4,14 +4,11 @@ import { ToolsPanel } from '@/components/biz/tools-panel'
 export default async function Home() {
   return (
     <main className="flex-grow-0 flex-col items-center justify-between p-6 ">
-
       {
         toolPanels.map(panel => (
           <ToolsPanel key={panel.title} toolsPanel={panel} />
         ))
       }
-      {/* <div onClick={() => setTheme('light')}>light</div> */}
-      {/* <div onClick={() => setTheme('dark')}>dark</div> */}
       {/* <article className="prose">
         <h1>Garlic bread with cheese: What the science tells us</h1>
         <p>
