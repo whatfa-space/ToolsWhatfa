@@ -13,8 +13,8 @@ export const TagContainer: FC<PropsWithChildren<ITagContainerProps>> = ({
 }) => {
   const containIcon = icon ? Fa[icon] : null
   return (
-    <div className={`w-full  border border-neutral-content  mt-10 py-7 px-4 rounded-md  shadow-sm ${className}`}>
-      <div className="py-1 px-3 absolute -mt-12 bg-base-100 border rounded-md text-base-content flex items-center">
+    <div className={`w-full  border border-zinc-200/80  mt-10 py-7 px-4 rounded-md  shadow-sm ${className}`}>
+      <div className="py-1 px-3 absolute -mt-12 bg-base-100 border border-zinc-200/80 rounded-md text-base-content flex items-center">
         {
           containIcon && <FontAwesomeIcon
             className="shrink-0"

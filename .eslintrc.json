@@ -1,8 +1,15 @@
 {
   "extends": "next/core-web-vitals",
   "rules": {
-    "semi": ["error", "never"],
-    "quotes": ["error", "single"],
-    "consistent-return":"off"
+    "semi": [
+      "error",
+      "never"
+    ],
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "consistent-return": "off",
+    "arrow-body-style": "off"
   }
 }
