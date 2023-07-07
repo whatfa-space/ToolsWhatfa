@@ -2,19 +2,20 @@ import { IToolsPanel } from '@/interface/tools'
 
 export const toolPanels: IToolsPanel[] = [
   {
-    title: '热门',
-    icon: 'faFire',
+    title: '编程',
+    icon: 'faComputer',
     tools: [
       {
-        title: 'JSON',
-        desc: 'JSON转typescript',
+        title: 'json2ts',
+        desc: 'json转typescript',
         icon: 'faCode',
         link: '/json2ts',
       },
       {
-        title: 'JSON',
-        desc: 'JSON转typescript',
+        title: 'json格式化',
+        desc: 'json格式格式化',
         icon: 'faCode',
+        link: '/json2ts',
       },
       {
         title: 'JSON',
@@ -44,8 +45,8 @@ export const toolPanels: IToolsPanel[] = [
     ],
   },
   {
-    title: '编程',
-    icon: 'faComputer',
+    title: '热门',
+    icon: 'faFire',
     tools: [
       {
         title: 'JSON',
