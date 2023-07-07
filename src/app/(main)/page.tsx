@@ -3,7 +3,7 @@ import { ToolsPanel } from '@/components/biz/tools-panel'
 
 export default async function Home() {
   return (
-    <main className="flex-grow-0 flex-col items-center justify-between p-6 ">
+    <main className="flex-grow-0 flex-col items-center justify-between p-6 pt-14">
       {
         toolPanels.map(panel => (
           <ToolsPanel key={panel.title} toolsPanel={panel} />

@@ -32,7 +32,7 @@ export default function Header() {
     [isSticky])
   return (
     <>
-      <header className={`${headerClass} transform-gpu px-6 py-2  flex items-center justify-between sticky top-0 z-50 `}>
+      <header className={`${headerClass} w-full transform-gpu px-6 py-2  flex items-center justify-between fixed top-0 z-50 `}>
         <div className='  text-xl md:text-2xl flex-1 text-center'>ToolsWhatfa - 免费工具</div>
         <ThemeSwitch />
       </header>
