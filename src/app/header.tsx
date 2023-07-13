@@ -18,10 +18,7 @@ export default function Header() {
 
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
-        console.log('observer')
-        console.log('entry.isIntersecting', entry.isIntersecting)
         setIsSticky(!entry.isIntersecting)
-        console.log('observer end')
       })
     })
     observer.observe(headerRef.current)

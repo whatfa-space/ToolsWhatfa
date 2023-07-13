@@ -1,27 +1,56 @@
 'use client'
 
 import { getInputValue } from '@/utils'
-import { useQRCode } from 'next-qrcode'
-import { FormEvent, useCallback, useRef, useState } from 'react'
+import Image from 'next/image'
+import QrCodeWithLogo2 from 'qr-code-with-logo'
+
+import {
+  FormEvent, useCallback, useEffect, useRef, useState,
+} from 'react'
+import debounce from 'lodash/debounce'
+
+const initUrlText = 'https://tools.whatfa.com/'
 
 export const QRcodeGen = () => {
-  const { Image: QrCodeImage } = useQRCode()
-  const [text, setText] = useState('https://tools.whatfa.com/')
-  const [inputText, setInputText] = useState('https://tools.whatfa.com/')
-  const codeImgRef = useRef()
+  const [inputText, setInputText] = useState(initUrlText)
+  const [text, setText] = useState(initUrlText)
+  const [loading, setLoading] = useState(true)
+  const codeImgRef = useRef<HTMLImageElement>(null)
 
   const handleInput = useCallback((event: FormEvent) => {
     const value = getInputValue(event)
     setInputText(value)
   }, [])
 
-  const handleGen = useCallback(() => {
+  const handleBind = useCallback((opt?: any) => {
+    return QrCodeWithLogo2.toImage({
+      image: codeImgRef.current,
+      nodeQrCodeOptions: {
+        margin: 1,
+      },
+      content: text,
+      width: 380,
+      ...opt,
+    })
+  }, [text])
+
+  const handleGen = debounce(() => {
     setText(inputText)
-  }, [inputText])
+    console.log('handleGen')
+  }, 300, {
+    leading: true,
+  })
 
   const handleDownload = () => {
-    alert('下载功能暂未开发')
+    handleBind({
+      download: true,
+      downloadName: 'qrcode.png',
+    })
   }
+
+  useEffect(() => {
+    handleBind().then(() => setLoading(false))
+  }, [handleBind])
 
   return (
     <div className='flex flex-col items-center md:flex-row md:min-h-[200px] justify-center'>
@@ -30,23 +59,8 @@ export const QRcodeGen = () => {
         <button onClick={handleGen} disabled={inputText.length <= 0} className='btn btn-sm btn-outline mt-6'>生成二维码</button>
         <button onClick={handleDownload} className='btn btn-sm btn-outline mt-6'>下载</button>
       </div>
-      <div className='border shadow'>
-        <QrCodeImage
-          text={text}
-          options={{
-            type: 'image/jpeg',
-            quality: 0.92,
-            // level: 'M',
-            level: 'Q',
-            margin: 3,
-            scale: 4,
-            width: 200,
-            color: {
-              dark: '#000',
-              light: '#fff',
-            },
-          }}
-        />
+      <div className='border shadow w-52 h-52 relative'>
+        <Image style={{ display: loading ? 'none' : 'block' }} src='' alt='qrcode' ref={codeImgRef} fill={true} />
       </div>
 
     </div>
