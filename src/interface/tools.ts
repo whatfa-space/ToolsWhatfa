@@ -10,5 +10,6 @@ export interface ITool {
 export interface IToolsPanel {
   title: string
   icon: TIcon
+  iconClass?: string
   tools: ITool[]
 }

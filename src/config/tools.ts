@@ -4,6 +4,7 @@ export const toolPanels: IToolsPanel[] = [
   {
     title: '热门',
     icon: 'faFire',
+    iconClass: 'text-error',
     tools: [
       {
         title: '二维码生成',
