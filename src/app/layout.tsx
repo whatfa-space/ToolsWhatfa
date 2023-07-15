@@ -4,6 +4,7 @@ import { Metadata } from 'next'
 
 import ClientProvider from '@/providers/clientProvider'
 import { Root } from '@/components/layout/root/Root'
+import { clsxm } from '@/lib/helper/clsx'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,7 +21,7 @@ export default function RootLayout({
   return (
 
     <html lang="zh" className="noise " data-theme="light" >
-      <body className={`${inter.className}`}>
+      <body className={clsxm(inter.className,'font-serif')}>
         <ClientProvider>
           <Root>
             {children}
