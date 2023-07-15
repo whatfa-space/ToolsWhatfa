@@ -11,7 +11,7 @@ export function Announcement() {
           <span>
             <FaIcon icon="faUserGroup" className="w-5 h-5 inline" />
               QQ闲聊群
-            <Link target='_blank' href={'https://qm.qq.com/q/xWyvsLDuIE'}>496313529</Link>
+            <Link target='_blank' href={'https://qm.qq.com/q/xWyvsLDuIE'} className='text-primary'>496313529</Link>
           </span>
         </li>
       </ul>
