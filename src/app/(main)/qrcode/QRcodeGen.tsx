@@ -4,9 +4,11 @@ import { getInputValue } from '@/utils'
 import Image from 'next/image'
 import QrCodeWithLogo2 from 'qr-code-with-logo'
 
-import { FormEvent, useCallback, useEffect, useRef, useState } from 'react'
+import {
+  FormEvent, useCallback, useEffect, useRef, useState,
+} from 'react'
 import debounce from 'lodash/debounce'
-import { PhotoSlider, PhotoView } from 'react-image-previewer'
+import { PhotoSlider } from 'react-image-previewer'
 
 const initUrlText = 'https://tools.whatfa.com/'
 
@@ -15,6 +17,13 @@ export const QRcodeGen = () => {
   const [text, setText] = useState(initUrlText)
   const [loading, setLoading] = useState(true)
   const codeImgRef = useRef<HTMLImageElement>(null)
+
+  const getCode = () => {
+    if (codeImgRef.current) {
+      return codeImgRef.current.src
+    }
+    return ''
+  }
 
   const handleInput = useCallback((event: FormEvent) => {
     const value = getInputValue(event)
@@ -33,7 +42,7 @@ export const QRcodeGen = () => {
         ...opt,
       })
     },
-    [text]
+    [text],
   )
 
   const handleGen = debounce(
@@ -44,7 +53,7 @@ export const QRcodeGen = () => {
     300,
     {
       leading: true,
-    }
+    },
   )
 
   const handleDownload = () => {
@@ -59,13 +68,14 @@ export const QRcodeGen = () => {
   }, [handleBind])
 
   const [visible, setVisible] = useState(false)
-  const [index, setIndex] = useState(0)
-  const [previewImgs, setPreviewImgs] = useState([])
+  const [previewImgs, setPreviewImgs] = useState<string[]>([])
 
-  const handlePreview=()=>{
-    // codeImgRef
-    setPreviewImgs([codeImgRef.current.src])
-    setVisible(true)
+  const handlePreview = () => {
+    const qrcode = getCode()
+    setPreviewImgs([getCode()])
+    if (qrcode) {
+      setVisible(true)
+    }
   }
 
   return (
@@ -91,31 +101,22 @@ export const QRcodeGen = () => {
           下载
         </button>
       </div>
-      {/* <PhotoView src="https://i3.mjj.rip/2023/07/15/0082c7f6a66f60b3b2c1a1459f63e096.jpeg">
-        <img
-          src="https://i3.mjj.rip/2023/07/15/0082c7f6a66f60b3b2c1a1459f63e096.jpeg"
-          alt=""
-        />
-      </PhotoView> */}
-          <PhotoSlider
-        // images={[{src:'https://i3.mjj.rip/2023/07/15/0082c7f6a66f60b3b2c1a1459f63e096.jpeg',key:'https://i3.mjj.rip/2023/07/15/0082c7f6a66f60b3b2c1a1459f63e096.jpeg'}]}
-        images={previewImgs.map((url)=>({src:url,key:url}))}
+      <PhotoSlider
+        images={previewImgs.map(url => ({ src: url, key: url }))}
         visible={visible}
         onClose={() => setVisible(false)}
         index={0}
-        onIndexChange={setIndex}
       />
-      <button onClick={handlePreview}>
-        Click
-      </button>
       <div className="border shadow w-52 h-52 relative">
-          <Image
-            style={{ display: loading ? 'none' : 'block' }}
-            src="https://i3.mjj.rip/2023/07/15/0082c7f6a66f60b3b2c1a1459f63e096.jpeg"
-            alt="qrcode"
-            ref={codeImgRef}
-            fill={true}
-          />
+        <Image
+          style={{ display: loading ? 'none' : 'block' }}
+          className='cursor-pointer'
+          src=""
+          alt="qrcode"
+          ref={codeImgRef}
+          fill={true}
+          onClick={handlePreview}
+        />
       </div>
     </div>
   )

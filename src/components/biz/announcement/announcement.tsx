@@ -10,7 +10,7 @@ export function Announcement() {
           <span className='flex items-center text-sm font-mono'>
             <FaIcon icon="faUserGroup" className="w-[14px] h-[14px] " />
               QQ闲聊群：
-              <TLink target='_blank' href={'https://qm.qq.com/q/xWyvsLDuIE'}>496313529</TLink>
+            <TLink target='_blank' href={'https://qm.qq.com/q/xWyvsLDuIE'}>496313529</TLink>
           </span>
         </li>
       </ul>
