@@ -2,6 +2,7 @@ import { TIcon } from '@/interface/tools'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { FC, PropsWithChildren } from 'react'
 import * as Fa from '@fortawesome/free-solid-svg-icons'
+import { clsxm } from '@/lib/helper/clsx'
 
 interface ITagContainerProps {
   icon?: TIcon
@@ -18,7 +19,7 @@ export const TagContainer: FC<PropsWithChildren<ITagContainerProps>> = ({
       <div className="py-1 px-3 absolute -mt-12 bg-base-100 border border-zinc-200/80 rounded-md text-base-content flex items-center">
         {
           containIcon && <FontAwesomeIcon
-            className={`shrink-0 ${iconClass}`}
+            className={clsxm('hrink-0',iconClass)}
             icon={containIcon}
             width={16}
             height={16}
