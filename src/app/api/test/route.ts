@@ -1,6 +1,7 @@
-import { type NextRequest, NextResponse } from 'next/server'
+import {  NextResponse } from 'next/server'
 
-export async function GET(req: NextRequest) {
+// export async function GET(req: NextRequest) {
+export async function GET() {
   // if (!success) {
   //   return new Response("err", {
   //     status: 0,
