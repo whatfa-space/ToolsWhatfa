@@ -13,6 +13,11 @@ export default function JsonFormat() {
       <TagContainer title='二维码生成' icon='faQrcode'>
         <CodeImgGen />
       </TagContainer>
+      {/* <TagContainer title='历史' icon='faClockRotateLeft'>
+        <div>
+          历史
+        </div>
+      </TagContainer> */}
     </main>
   )
 }
