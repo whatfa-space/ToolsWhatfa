@@ -1,9 +1,5 @@
 import { TagContainer } from '@/components/layout/tag-container'
 import TLink from '@/components/ui/TLink/t-link'
-import { underlineAnimationClx } from '@/lib/class'
-import { clsxm } from '@/lib/helper/clsx'
-import clsx from 'clsx'
-import Link from 'next/link'
 import { FaIcon } from '../FaIcon'
 
 export function Announcement() {
