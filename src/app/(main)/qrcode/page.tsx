@@ -1,5 +1,6 @@
 import { TagContainer } from '@/components/layout/tag-container'
 import { Metadata } from 'next'
+import History from './history'
 import CodeImgGen from './QRcodeGen'
 
 export const metadata: Metadata = {
@@ -13,11 +14,9 @@ export default function JsonFormat() {
       <TagContainer title='二维码生成' icon='faQrcode'>
         <CodeImgGen />
       </TagContainer>
-      {/* <TagContainer title='历史' icon='faClockRotateLeft'>
-        <div>
-          历史
-        </div>
-      </TagContainer> */}
+      <TagContainer title='历史' icon='faClockRotateLeft'>
+        <History/>
+      </TagContainer>
     </main>
   )
 }
