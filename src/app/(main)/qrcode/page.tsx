@@ -1,6 +1,6 @@
 import { TagContainer } from '@/components/layout/tag-container'
 import { Metadata } from 'next'
-import History from './history'
+// import History from './history'
 import CodeImgGen from './QRcodeGen'
 
 export const metadata: Metadata = {
