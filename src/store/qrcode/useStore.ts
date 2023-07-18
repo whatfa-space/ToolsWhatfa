@@ -2,9 +2,11 @@ import { create } from 'zustand'
 // import { persist, createJSONStorage } from 'zustand/middleware'
 import { initialState, QRcodeRecord, QRcodeState } from './initialState'
 
-export type TQrcodeStore = QRcodeState & {
+interface StoreMethod {
   addRecord: (record: QRcodeRecord) => void
 }
+
+export type TQrcodeStore = QRcodeState & StoreMethod
 export const useQRcodeStore = create<TQrcodeStore>(
   set => (
     {
