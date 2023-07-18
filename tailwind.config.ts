@@ -21,7 +21,7 @@
 // };
 import type{ Config } from 'tailwindcss'
 
-const UIKitColors = {
+export const UIKitColors = {
   red: {
     light: '#FF3B30',
     dark: '#FF453A',

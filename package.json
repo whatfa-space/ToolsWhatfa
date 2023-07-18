@@ -8,11 +8,12 @@
     "build": "next build",
     "start": "next start -p 3001",
     "start:server": "tsc --project tsconfig.server.json && node dist/server.js",
-    "lint": "next lint",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": ["npm run lint"]
+    "*.{js,jsx,ts,tsx}": ["pnpm run lint"]
   },
   "dependencies": {
     "@dellarosamarco/json-2-ts": "^1.1.7",
