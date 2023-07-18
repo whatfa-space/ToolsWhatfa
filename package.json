@@ -12,7 +12,7 @@
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": ["npm run lint", "git add"]
+    "*.{js,jsx,ts,tsx}": ["npm run lint"]
   },
   "dependencies": {
     "@dellarosamarco/json-2-ts": "^1.1.7",
