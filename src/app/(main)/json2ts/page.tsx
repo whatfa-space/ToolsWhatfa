@@ -23,9 +23,21 @@ export default function Json2Ts() {
   const onInput = useCallback((event: any) => {
     setJson(event.target.value)
   }, [])
+
   const handleCopy = useCallback(() => {
     copy(tsResult)
   }, [tsResult])
+
+  const handleFormat = useCallback(() => {
+    try {
+      const jsonObj = JSON.parse(json)
+      const result = JSON.stringify(jsonObj, null, 2)
+      setJson(result)
+      console.log(result)
+    } catch (error) {
+      console.error(error)
+    }
+  }, [json])
 
   return (
     <main className="p-6 pt-14">
@@ -44,8 +56,14 @@ export default function Json2Ts() {
           >
             转换
           </button>
-          <button onClick={handleCopy} className="btn btn-sm btn-neutral">
+          <button onClick={handleCopy} className="btn btn-sm btn-neutral mr-2">
             复制
+          </button>
+          <button
+            onClick={handleFormat}
+            className="btn btn-sm btn-neutral mr-2"
+          >
+            格式化
           </button>
         </div>
         <textarea
