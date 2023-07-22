@@ -4,9 +4,7 @@ import { getInputValue } from '@/utils'
 import Image from 'next/image'
 import QrCodeWithLogo2 from 'qr-code-with-logo'
 
-import {
-  FormEvent, useCallback, useEffect, useRef, useState,
-} from 'react'
+import { FormEvent, useCallback, useEffect, useRef, useState } from 'react'
 import debounce from 'lodash/debounce'
 import { PhotoSlider } from 'react-image-previewer'
 
@@ -42,7 +40,7 @@ export const QRcodeGen = () => {
         ...opt,
       })
     },
-    [text],
+    [text]
   )
 
   const handleGen = debounce(
@@ -53,7 +51,7 @@ export const QRcodeGen = () => {
     300,
     {
       leading: true,
-    },
+    }
   )
 
   const handleDownload = () => {
@@ -102,7 +100,7 @@ export const QRcodeGen = () => {
         </button>
       </div>
       <PhotoSlider
-        images={previewImgs.map(url => ({ src: url, key: url }))}
+        images={previewImgs.map((url) => ({ src: url, key: url }))}
         visible={visible}
         onClose={() => setVisible(false)}
         index={0}
@@ -110,7 +108,7 @@ export const QRcodeGen = () => {
       <div className="border shadow w-52 h-52 relative">
         <Image
           style={{ display: loading ? 'none' : 'block' }}
-          className='cursor-pointer'
+          className="cursor-pointer"
           src=""
           alt="qrcode"
           ref={codeImgRef}

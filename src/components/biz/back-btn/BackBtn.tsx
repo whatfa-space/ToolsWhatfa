@@ -3,7 +3,10 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { HTMLAttributes, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 
-export const BackBtn = ({ className, ...rest }: HTMLAttributes<HTMLDivElement>) => {
+export const BackBtn = ({
+  className,
+  ...rest
+}: HTMLAttributes<HTMLDivElement>) => {
   const router = useRouter()
   const handleBack = useCallback(() => {
     router.back()

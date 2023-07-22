@@ -10,13 +10,10 @@ interface IToolCard {
   desc: string
   link?: string
 }
-const ToolCard: FC<IToolCard> = ({
-  icon, title, desc, link,
-}) => {
+const ToolCard: FC<IToolCard> = ({ icon, title, desc, link }) => {
   const iconC = Fa[icon]
   return (
     <Link href={link || ''}>
-
       <div className="flex items-center border border-zinc-200/80 bg-base-100 p-1 rounded-md hover:shadow-md active:bg-base-200 cursor-pointer transition-shadow duration-300">
         <FontAwesomeIcon
           className="shrink-0 m-1"

@@ -79,7 +79,7 @@ const DarkIcon = () => (
 const ThemeIndicator = () => {
   const { theme } = useTheme()
   const { isClient } = useIsClient()
-  if (!theme || !isClient) return (<></>)
+  if (!theme || !isClient) return <></>
 
   return (
     <div
@@ -144,7 +144,7 @@ const ButtonGroup = () => {
 }
 
 export const ThemeSwitch = () => (
-  <div className="relative inline-block" >
+  <div className="relative inline-block">
     <ThemeIndicator />
     <ButtonGroup />
   </div>

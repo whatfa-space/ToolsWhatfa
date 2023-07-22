@@ -7,4 +7,5 @@ export const Root: FC<PropsWithChildren> = ({ children }) => (
     <Header />
     {children}
     <Footer />
-  </>)
+  </>
+)

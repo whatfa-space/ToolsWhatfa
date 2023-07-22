@@ -5,11 +5,9 @@ import { Announcement } from '@/components/biz/announcement'
 export default async function Home() {
   return (
     <main className="flex-grow-0 flex-col items-center justify-between p-6 pt-14">
-      {
-        toolPanels.map(panel => (
-          <ToolsPanel key={panel.title} toolsPanel={panel} />
-        ))
-      }
+      {toolPanels.map((panel) => (
+        <ToolsPanel key={panel.title} toolsPanel={panel} />
+      ))}
       <Announcement />
       {/* <article className="prose">
         <h1>Garlic bread with cheese: What the science tells us</h1>

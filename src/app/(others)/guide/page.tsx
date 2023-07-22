@@ -8,11 +8,15 @@ export default function Guide() {
       </header>
       <div>
         免费chatgpt网站：
-        <TLink href="https://gpt.whatfa.com" target='_blank'>https://gpt.whatfa.com</TLink>
+        <TLink href="https://gpt.whatfa.com" target="_blank">
+          https://gpt.whatfa.com
+        </TLink>
       </div>
       <div>
         免费在线工具网站：
-        <TLink href="https://tools.whatfa.com" target='_blank'>https://tools.whatfa.com</TLink>
+        <TLink href="https://tools.whatfa.com" target="_blank">
+          https://tools.whatfa.com
+        </TLink>
       </div>
     </main>
   )

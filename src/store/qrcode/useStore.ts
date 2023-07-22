@@ -7,16 +7,12 @@ interface StoreMethod {
 }
 
 export type TQrcodeStore = QRcodeState & StoreMethod
-export const useQRcodeStore = create<TQrcodeStore>(
-  set => (
-    {
-      ...initialState,
-      addRecord: (record: QRcodeRecord) => {
-        set(state => ({ history: [...state.history, record] }))
-      },
-    }
-  ),
-)
+export const useQRcodeStore = create<TQrcodeStore>((set) => ({
+  ...initialState,
+  addRecord: (record: QRcodeRecord) => {
+    set((state) => ({ history: [...state.history, record] }))
+  },
+}))
 
 // export const useQRcodeStore = create(
 //   persist<TQrcodeStore>(

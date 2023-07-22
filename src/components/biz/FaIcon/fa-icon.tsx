@@ -10,6 +10,9 @@ export function FaIcon({ icon, className }: IFaIconProps) {
   const containIcon = icon ? Fa[icon] : null
   return (
     <>
-      {containIcon && <FontAwesomeIcon className={className} icon={containIcon} />}
-    </>)
+      {containIcon && (
+        <FontAwesomeIcon className={className} icon={containIcon} />
+      )}
+    </>
+  )
 }

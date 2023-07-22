@@ -8,12 +8,15 @@ interface ToolsPanelProps {
 }
 
 export const ToolsPanel: FC<ToolsPanelProps> = ({ toolsPanel }) => (
-  <TagContainer title={toolsPanel.title} icon={toolsPanel.icon} key={toolsPanel.title} iconClass={toolsPanel.iconClass} className="grid grid-cols-2 gap-2 md:grid-cols-3">
-    {toolsPanel.tools.map(tool => (
-      <ToolCard
-        key={tool.title}
-        {...tool}
-      />
+  <TagContainer
+    title={toolsPanel.title}
+    icon={toolsPanel.icon}
+    key={toolsPanel.title}
+    iconClass={toolsPanel.iconClass}
+    className="grid grid-cols-2 gap-2 md:grid-cols-3"
+  >
+    {toolsPanel.tools.map((tool) => (
+      <ToolCard key={tool.title} {...tool} />
     ))}
   </TagContainer>
 )

@@ -1,4 +1,4 @@
-import {  NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
 
 // export async function GET(req: NextRequest) {
 export async function GET() {
@@ -8,12 +8,14 @@ export async function GET() {
   //   });
   // }
 
-  return new Promise<void>(resolve => {
+  return new Promise<void>((resolve) => {
     setTimeout(() => {
       resolve()
     }, 10000)
-  }).then(() => NextResponse.json({
-    code: 200,
-    message: 'hello!10',
-  }))
+  }).then(() =>
+    NextResponse.json({
+      code: 200,
+      message: 'hello!10',
+    })
+  )
 }

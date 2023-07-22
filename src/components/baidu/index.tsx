@@ -8,5 +8,5 @@ export default function Baidu() {
     s.parentNode.insertBefore(hm, s);
   })();
   `
-  return (<script dangerouslySetInnerHTML={{ __html: hm }}></script>)
+  return <script dangerouslySetInnerHTML={{ __html: hm }}></script>
 }

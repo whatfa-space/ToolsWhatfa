@@ -1,4 +1,4 @@
-import type{ Metadata } from 'next'
+import type { Metadata } from 'next'
 import { PropsWithChildren } from 'react'
 
 export const metadata: Metadata = {
@@ -6,10 +6,6 @@ export const metadata: Metadata = {
   description: '在线Json格式化工具',
 }
 
-export default function Layout({ children }:PropsWithChildren) {
-  return (
-    <>
-      { children }
-    </>
-  )
+export default function Layout({ children }: PropsWithChildren) {
+  return <>{children}</>
 }

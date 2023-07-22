@@ -4,13 +4,15 @@ import { FaIcon } from '../FaIcon'
 
 export function Announcement() {
   return (
-    <TagContainer title={'公告'} icon='faBullhorn'>
+    <TagContainer title={'公告'} icon="faBullhorn">
       <ul>
         <li>
-          <span className='flex items-center text-sm font-mono'>
+          <span className="flex items-center text-sm font-mono">
             <FaIcon icon="faUserGroup" className="w-[14px] h-[14px] " />
-              QQ闲聊群：
-            <TLink target='_blank' href={'https://qm.qq.com/q/xWyvsLDuIE'}>496313529</TLink>
+            QQ闲聊群：
+            <TLink target="_blank" href={'https://qm.qq.com/q/xWyvsLDuIE'}>
+              496313529
+            </TLink>
           </span>
         </li>
       </ul>
