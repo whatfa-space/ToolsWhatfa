@@ -19,7 +19,10 @@ jobs:
           node-version: 18.15.0
 
       - name: Install pnpm
-        run: npm install -g pnpm
+        run: |
+          npm install -g pnpm && pnpm -v
+          echo "node version: $(node -v)"
+          echo "pnpm version: $(pnpm -v)"
 
       - name: Install dependencies
         run: pnpm install
