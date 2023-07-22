@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - test
+
+jobs:
+  test_and_deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Run tests
+        run: pnpm run lint
+
+  production:
+    needs: test_and_deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      # Here you can define the steps to deploy to the production environment
+      # This could include steps to build and deploy your application
+      # For the sake of simplicity, let's assume it's just a placeholder step:
+      - name: Deploy to production
+        run: echo "Deploying to production..."
