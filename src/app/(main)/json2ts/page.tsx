@@ -5,6 +5,7 @@ import { useCallback, useState } from 'react'
 import { JsonReader } from '@dellarosamarco/json-2-ts'
 import copy from 'copy-to-clipboard'
 import { toCamelCase, toSnakeCase } from '@/utils'
+import { useStore } from '@/store/json2ts'
 // import { Metadata } from 'next'
 
 // export const metadata: Metadata = {
@@ -13,8 +14,10 @@ import { toCamelCase, toSnakeCase } from '@/utils'
 // }
 
 export default function Json2Ts() {
-  const [json, setJson] = useState('')
+  // const [json, setJson] = useState('')
   const [tsResult, setTsResult] = useState('')
+  const setJson = useStore((state) => state.setLastJson)
+  const json = useStore((state) => state.lastJson)
 
   const handleConvert = useCallback(() => {
     try {
