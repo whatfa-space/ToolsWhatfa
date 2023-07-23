@@ -4,7 +4,10 @@ import Link from 'next/link'
 export const Footer = () => (
   <footer className="p-6 border-t border-zinc-200/80 flex flex-col items-center mt-32">
     <div className="mb-3">
-      © 2020-2023 <Link href="https://tools.whatfa.com">tools.whatfa.com</Link>
+      © 2020-2023
+      <Link href="https://tools.whatfa.com" target="_blank">
+        tools.whatfa.com
+      </Link>
     </div>
     <ThemeSwitch />
   </footer>
