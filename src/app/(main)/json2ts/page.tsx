@@ -1,7 +1,7 @@
 'use client'
 
 import { TagContainer } from '@/components/layout/tag-container'
-import { useCallback, useState } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 import { JsonReader } from '@dellarosamarco/json-2-ts'
 import copy from 'copy-to-clipboard'
 import { toCamelCase, toSnakeCase } from '@/utils'
@@ -29,9 +29,12 @@ export default function Json2Ts() {
     }
   }, [json])
 
-  const onInput = useCallback((event: any) => {
-    setJson(event.target.value)
-  }, [])
+  const onInput = useCallback(
+    (event: any) => {
+      setJson(event.target.value)
+    },
+    [setJson]
+  )
 
   const handleCopy = useCallback(() => {
     copy(tsResult)
@@ -45,7 +48,7 @@ export default function Json2Ts() {
     } catch (error) {
       console.error(error)
     }
-  }, [json])
+  }, [json, setJson])
 
   const handleToCamel = useCallback(() => {
     try {
@@ -56,7 +59,7 @@ export default function Json2Ts() {
     } catch (error) {
       console.error(error)
     }
-  }, [json])
+  }, [json, setJson])
 
   const handleToSnake = useCallback(() => {
     try {
@@ -67,7 +70,38 @@ export default function Json2Ts() {
     } catch (error) {
       console.error(error)
     }
-  }, [json])
+  }, [json, setJson])
+
+  const btnList = useMemo(
+    () => [
+      {
+        key: 'CONVERT',
+        text: '转换',
+        onClick: handleConvert,
+      },
+      {
+        key: 'COPY',
+        text: '复制',
+        onClick: handleCopy,
+      },
+      {
+        key: 'FORMAT',
+        text: '格式化',
+        onClick: handleFormat,
+      },
+      {
+        key: 'TO_CAMEL',
+        text: '转驼峰',
+        onClick: handleToCamel,
+      },
+      {
+        key: 'TO_SNAKE',
+        text: '转下划线',
+        onClick: handleToSnake,
+      },
+    ],
+    [handleConvert, handleCopy, handleFormat, handleToCamel, handleToSnake]
+  )
 
   return (
     <main className="p-6 pt-14">
@@ -76,47 +110,27 @@ export default function Json2Ts() {
           在线JSON转typescript工具 转驼峰/下划线/格式化
         </h2>
         <div className="flex flex-col lg:flex-row">
-          {/* input */}
           <textarea
             value={json}
             onChange={onInput}
             className="textarea textarea-bordered w-full h-48 md:h-56 lg:h-[460px]"
             placeholder="请输入JSON"
           />
-          <div className="flex  my-4 flex-wrap m-3 shrink-0 lg:flex-col">
-            <button
-              onClick={handleConvert}
-              className="btn btn-xs btn-neutral mr-2 mb-2 sm:btn-sm"
-            >
-              转换
-            </button>
-            <button
-              onClick={handleCopy}
-              className="btn btn-xs btn-neutral mr-2 mb-2 sm:btn-sm"
-            >
-              复制
-            </button>
-            <button
-              onClick={handleFormat}
-              className="btn btn-xs btn-neutral mr-2 mb-2 sm:btn-sm"
-            >
-              格式化
-            </button>
-            <button
-              onClick={handleToCamel}
-              className="btn btn-xs btn-neutral mr-2 mb-2 sm:btn-sm"
-            >
-              转驼峰
-            </button>
-            <button
-              onClick={handleToSnake}
-              className="btn btn-xs btn-neutral mr-2 mb-2 sm:btn-sm"
-            >
-              转下划线
-            </button>
+          <div
+            className="
+          flex  my-4 flex-wrap m-3 shrink-0 lg:flex-col"
+          >
+            {btnList.map(({ key, text, onClick }) => (
+              <button
+                key={key}
+                onClick={onClick}
+                className="btn btn-sm btn-neutral mr-2 mb-2 sm:btn-sm"
+              >
+                {text}
+              </button>
+            ))}
           </div>
 
-          {/* out */}
           <textarea
             value={tsResult}
             className="textarea textarea-bordered w-full h-48 md:h-56 lg:h-[460px]"
