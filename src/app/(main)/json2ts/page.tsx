@@ -1,11 +1,11 @@
 import { TagContainer } from '@/components/layout/tag-container'
 import MainArea from './MainArea'
-// import { Metadata } from 'next'
+import { Metadata } from 'next'
 
-// export const metadata: Metadata = {
-//   title: 'tools whatfa',
-//   description: '在线工具',
-// }
+export const metadata: Metadata = {
+  title: 'json转ts - tools whatfa',
+  description: '在线工具',
+}
 
 export default function Json2Ts() {
   return (
