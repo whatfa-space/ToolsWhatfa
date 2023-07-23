@@ -20,6 +20,7 @@
 //   plugins: [require("@tailwindcss/typography"), require("daisyui")],
 // };
 import type { Config } from 'tailwindcss'
+import { PluginAPI } from 'tailwindcss/types/config'
 
 export const UIKitColors = {
   red: {
@@ -257,7 +258,20 @@ const twConfig: Config = {
       },
     },
   },
-  plugins: [require('@tailwindcss/typography'), require('daisyui')],
+  plugins: [
+    require('@tailwindcss/typography'),
+    require('daisyui'),
+    extraUnitiesPlugin,
+  ],
+}
+
+function extraUnitiesPlugin({ addUtilities }: PluginAPI) {
+  const styles = {
+    '.fill-content': {
+      'min-height': 'calc(100vh - 15.7rem)',
+    },
+  }
+  addUtilities(styles)
 }
 
 export default twConfig

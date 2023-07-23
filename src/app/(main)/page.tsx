@@ -4,7 +4,7 @@ import { Announcement } from '@/components/biz/announcement'
 
 export default async function Home() {
   return (
-    <main className="flex-grow-0 flex-col items-center justify-between p-6 pt-14">
+    <main className="flex-grow-0 flex-col items-center justify-between p-6 pt-14 fill-content">
       {toolPanels.map((panel) => (
         <ToolsPanel key={panel.title} toolsPanel={panel} />
       ))}

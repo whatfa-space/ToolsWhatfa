@@ -7,7 +7,7 @@ import { useIsClient } from '@/hooks/common/useIsClient'
 
 export default function ClientProvider({ children }: PropsWithChildren) {
   const { isClient } = useIsClient()
-  if (!isClient) return null
+  if (!isClient) return <>{children}</>
   return (
     <ThemeProvider>
       <PhotoProvider>{children}</PhotoProvider>
