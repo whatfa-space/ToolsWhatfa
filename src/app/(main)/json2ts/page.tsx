@@ -24,7 +24,6 @@ export default function Json2Ts() {
       const jsonObj = JSON.parse(json)
       const result = JsonReader.convert(jsonObj)
       setTsResult(result)
-      console.log(result)
     } catch (error) {
       console.error(error)
     }
@@ -43,7 +42,6 @@ export default function Json2Ts() {
       const jsonObj = JSON.parse(json)
       const result = JSON.stringify(jsonObj, null, 2)
       setJson(result)
-      console.log(result)
     } catch (error) {
       console.error(error)
     }
@@ -55,7 +53,6 @@ export default function Json2Ts() {
       const camelObj = toCamelCase(jsonObj)
       const result = JSON.stringify(camelObj, null, 2)
       setJson(result)
-      console.log(result)
     } catch (error) {
       console.error(error)
     }
@@ -67,7 +64,6 @@ export default function Json2Ts() {
       const snakeObj = toSnakeCase(jsonObj)
       const result = JSON.stringify(snakeObj, null, 2)
       setJson(result)
-      console.log(result)
     } catch (error) {
       console.error(error)
     }
@@ -79,50 +75,55 @@ export default function Json2Ts() {
         <h2 className="ml-1 my-3 text-sm md:text-lg">
           在线JSON转typescript工具 转驼峰/下划线/格式化
         </h2>
-        <textarea
-          value={json}
-          onChange={onInput}
-          className="textarea textarea-bordered w-full h-40 md:h-56"
-          placeholder="请输入JSON"
-        />
-        <div className="flex my-4  flex-wrap">
-          <button
-            onClick={handleConvert}
-            className="btn btn-sm btn-neutral mr-2 mb-2"
-          >
-            转换
-          </button>
-          <button
-            onClick={handleCopy}
-            className="btn btn-sm btn-neutral mr-2 mb-2"
-          >
-            复制
-          </button>
-          <button
-            onClick={handleFormat}
-            className="btn btn-sm btn-neutral mr-2 mb-2"
-          >
-            格式化
-          </button>
-          <button
-            onClick={handleToCamel}
-            className="btn btn-sm btn-neutral mr-2 mb-2"
-          >
-            转驼峰
-          </button>
-          <button
-            onClick={handleToSnake}
-            className="btn btn-sm btn-neutral mr-2 mb-2"
-          >
-            转下划线
-          </button>
+        <div className="flex flex-col lg:flex-row">
+          {/* input */}
+          <textarea
+            value={json}
+            onChange={onInput}
+            className="textarea textarea-bordered w-full h-48 md:h-56 lg:h-[460px]"
+            placeholder="请输入JSON"
+          />
+          <div className="flex  my-4 flex-wrap m-3 shrink-0 lg:flex-col">
+            <button
+              onClick={handleConvert}
+              className="btn btn-xs btn-neutral mr-2 mb-2 sm:btn-sm"
+            >
+              转换
+            </button>
+            <button
+              onClick={handleCopy}
+              className="btn btn-xs btn-neutral mr-2 mb-2 sm:btn-sm"
+            >
+              复制
+            </button>
+            <button
+              onClick={handleFormat}
+              className="btn btn-xs btn-neutral mr-2 mb-2 sm:btn-sm"
+            >
+              格式化
+            </button>
+            <button
+              onClick={handleToCamel}
+              className="btn btn-xs btn-neutral mr-2 mb-2 sm:btn-sm"
+            >
+              转驼峰
+            </button>
+            <button
+              onClick={handleToSnake}
+              className="btn btn-xs btn-neutral mr-2 mb-2 sm:btn-sm"
+            >
+              转下划线
+            </button>
+          </div>
+
+          {/* out */}
+          <textarea
+            value={tsResult}
+            className="textarea textarea-bordered w-full h-48 md:h-56 lg:h-[460px]"
+            readOnly
+            placeholder="等待转换..."
+          ></textarea>
         </div>
-        <textarea
-          value={tsResult}
-          className="textarea textarea-bordered w-full h-40 md:h-56"
-          readOnly
-          placeholder="等待转换..."
-        ></textarea>
       </TagContainer>
     </main>
   )
