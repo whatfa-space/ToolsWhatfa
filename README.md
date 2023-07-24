@@ -6,7 +6,13 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ![pc-light](https://github.com/whatfa-space/ToolsWhatfa/blob/main/doc/screen-pc-dark.png?raw=true)
 
+![pc-dark](https://github.com/whatfa-space/ToolsWhatfa/blob/main/doc/pc-dark.png?raw=true)
+
 ### mobile
+
+![mobile-dark](https://github.com/whatfa-space/ToolsWhatfa/blob/main/doc/mobile-dark.png?raw=true)
+
+![mobile-light](https://github.com/whatfa-space/ToolsWhatfa/blob/main/doc/mobile-light.png?raw=true)
 
 ## Getting Started
 
