@@ -268,7 +268,7 @@ const twConfig: Config = {
 function extraUnitiesPlugin({ addUtilities }: PluginAPI) {
   const styles = {
     '.fill-content': {
-      'min-height': 'calc(100vh - 15.7rem)',
+      'min-height': 'calc(100vh - 7.7rem)',
     },
   }
   addUtilities(styles)
