@@ -22,8 +22,8 @@
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
+    "@prisma/client": "5.0.0",
     "@tailwindcss/typography": "^0.5.9",
-    "@types/node": "20.3.1",
     "@types/react": "18.2.12",
     "@types/react-dom": "18.2.5",
     "autoprefixer": "10.4.14",
@@ -46,6 +46,7 @@
   },
   "devDependencies": {
     "@types/lodash": "^4.14.195",
+    "@types/node": "20.3.1",
     "@typescript-eslint/eslint-plugin": "^6.1.0",
     "@typescript-eslint/parser": "^6.1.0",
     "daisyui": "^3.1.7",
@@ -55,6 +56,8 @@
     "husky": "^8.0.3",
     "lint-staged": "^13.2.3",
     "prettier": "^3.0.0",
+    "prisma": "^5.0.0",
+    "ts-node": "^10.9.1",
     "typescript": "5.1.3"
   }
 }
