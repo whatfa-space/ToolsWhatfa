@@ -5,7 +5,7 @@ import { Footer } from '../footer'
 export const Root: FC<PropsWithChildren> = ({ children }) => (
   <>
     <Header />
-    {children}
+    <main className="p-6 pt-14 fill-content">{children}</main>
     <Footer />
   </>
 )
