@@ -1,0 +1,8 @@
+-- CreateTable
+CREATE TABLE "Feedback" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "showOnBoard" BOOLEAN NOT NULL DEFAULT false,
+    "email" TEXT,
+    "content" TEXT NOT NULL,
+    "createAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);

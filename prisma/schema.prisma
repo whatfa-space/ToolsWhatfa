@@ -24,3 +24,12 @@ model Post {
   author    User    @relation(fields: [authorId], references: [id])
   authorId  Int
 }
+
+// leave message
+model Feedback{
+id    Int @id @default(autoincrement())
+showOnBoard  Boolean @default(false)
+email   String?
+content String
+createAt DateTime @default(now())
+}
