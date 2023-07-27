@@ -43,6 +43,12 @@ npm version patch
 
 ```
 
+## prsma
+
+```bash
+npx prisma migrate dev --name init
+```
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

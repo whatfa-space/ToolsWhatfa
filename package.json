@@ -3,6 +3,7 @@
   "version": "0.1.1",
   "private": true,
   "scripts": {
+    "init:db": "npx prisma migrate dev --name init",
     "dev": "next dev",
     "build:server": "tsc --project tsconfig.server.json",
     "build": "next build",

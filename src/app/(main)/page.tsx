@@ -1,6 +1,7 @@
 import { toolPanels } from '@/config'
 import { ToolsPanel } from '@/components/biz/tools-panel'
 import { Announcement } from '@/components/biz/announcement'
+import Feedback from '@/components/biz/feedback'
 
 export default async function Home() {
   return (
@@ -9,7 +10,10 @@ export default async function Home() {
       {toolPanels.map((panel) => (
         <ToolsPanel key={panel.title} toolsPanel={panel} />
       ))}
+
       <Announcement />
+
+      <Feedback />
       {/* <article className="prose">
         <h1>Garlic bread with cheese: What the science tells us</h1>
         <p>
