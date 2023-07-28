@@ -1,4 +1,3 @@
-import { FaIcon } from '@/components/biz/FaIcon'
 import GithubIcon from '@/components/icon/github-icon'
 import TLink from '@/components/ui/TLink/t-link'
 
