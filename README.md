@@ -42,5 +42,5 @@ npm version patch
 wait list
 
 - [ ] page keywords
-- [ ] github icon
+- [x] github icon
 - [ ] feedback

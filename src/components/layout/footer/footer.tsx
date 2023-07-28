@@ -1,5 +1,6 @@
 import { ThemeSwitch } from '@/components/common/theme-switch'
 import Link from 'next/link'
+import Contact from './Contact'
 
 export const Footer = () => (
   <footer className="p-6 border-t border-zinc-200/80 flex flex-col items-center">
@@ -9,6 +10,9 @@ export const Footer = () => (
         tools.whatfa.com
       </Link>
     </div>
-    <ThemeSwitch />
+    <div className="flex">
+      <Contact />
+      <ThemeSwitch />
+    </div>
   </footer>
 )
