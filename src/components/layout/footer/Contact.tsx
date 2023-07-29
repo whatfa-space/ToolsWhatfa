@@ -10,7 +10,7 @@ const Contact = () => {
         underline={false}
         className="s shadow-xl rounded-full"
       >
-        <GithubIcon className="w-[32px] h-[32px]" />
+        <GithubIcon className="w-7 h-7" />
       </TLink>
     </div>
   )
