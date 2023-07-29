@@ -1,4 +1,5 @@
 import GithubIcon from '@/components/icon/github-icon'
+import { TencentIcon } from '@/components/icon/TencentIcon'
 import TLink from '@/components/ui/TLink/t-link'
 
 const Contact = () => {
@@ -9,11 +10,17 @@ const Contact = () => {
       href: 'https://github.com/whatfa-space/ToolsWhatfa',
       component: <GithubIcon className="w-7 h-7" />,
     },
+    {
+      key: 'TENCENT',
+      tooltip: 'qq',
+      href: 'https://qm.qq.com/q/xWyvsLDuIE',
+      component: <TencentIcon className="w-7 h-7" />,
+    },
   ]
   return (
-    <div className="flex flex-row items-center mr-4">
+    <div className="flex flex-row items-center">
       {contactList.map((item) => (
-        <div key={item.key} className="tooltip" data-tip={item.tooltip}>
+        <div key={item.key} className="tooltip mr-3" data-tip={item.tooltip}>
           <TLink
             href={item.href}
             target="_blank"
