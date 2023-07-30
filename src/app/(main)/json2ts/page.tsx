@@ -4,7 +4,10 @@ import { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'json转ts - tools whatfa',
-  description: '在线工具',
+  description:
+    'json转ts - tools whatfa 免费在线Json格式化工具  free json format',
+  keywords:
+    'toolswhatfa , 免费在线Json格式化工具, json格式化, free json format',
 }
 
 export default function Json2Ts() {
