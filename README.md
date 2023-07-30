@@ -45,3 +45,4 @@ wait list
 - [x] github icon
 - [ ] feedback
 - [ ] friends' links
+- [ ] Image compression
