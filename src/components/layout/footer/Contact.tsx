@@ -20,16 +20,20 @@ const Contact = () => {
   return (
     <div className="flex flex-row items-center">
       {contactList.map((item) => (
-        <div key={item.key} className="tooltip mr-3" data-tip={item.tooltip}>
-          <TLink
-            href={item.href}
-            target="_blank"
-            underline={false}
-            className="shadow-xl rounded-full"
+        <TLink
+          key={item.key}
+          href={item.href}
+          target="_blank"
+          underline={false}
+          className="flex items-center"
+        >
+          <div
+            className="tooltip rounded-full p-1  m-1 shadow-[0_1px_2px_0_rgba(127.5,127.5,127.5,.2),_0_1px_3px_0_rgba(127.5,127.5,127.5,.1)]"
+            data-tip={item.tooltip}
           >
             {item.component}
-          </TLink>
-        </div>
+          </div>
+        </TLink>
       ))}
     </div>
   )
