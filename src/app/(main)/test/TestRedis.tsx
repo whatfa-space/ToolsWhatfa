@@ -1,4 +1,4 @@
-// 'use client'
+'use client'
 import { env } from '@/config/env'
 import { redis } from '@/lib/redis'
 import { useCallback, useState } from 'react'
