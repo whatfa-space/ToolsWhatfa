@@ -23,6 +23,7 @@ export async function GET(req: NextRequest) {
   }
 
   const count = (await redis.get<number>(key)) || 0
+  console.log('get reactions', key, count)
 
   return Success({ key, count })
 }
@@ -41,5 +42,6 @@ export async function PATCH(req: NextRequest) {
   }
 
   const count = await redis.incr(key)
+  console.log('get reactions', key, count)
   return Success({ key, count })
 }
