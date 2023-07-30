@@ -1,23 +1,21 @@
 'use client'
-import { env } from '@/config/env'
-import { redis } from '@/lib/redis'
-import { useCallback, useState } from 'react'
+import { FC, useCallback, useState } from 'react'
 
-const TestRedis = () => {
-  // const data = await redis.set('foo', 'bar');
-  // const member =  redis.srandmember<string>('nextjs13')
-  const { UPSTASH_REDIS_REST_URL } = env
-  const [count, setCount] = useState(0)
+const TestRedis: FC<{ reaction: number }> = ({ reaction }) => {
+  const [count, setCount] = useState(reaction)
   const handleIncr = useCallback(() => {
-    redis.incr('like').then((val) => {
-      setCount(val)
-    })
+    fetch('/api/reaction?id=' + '123', { method: 'PATCH' }).then(
+      async (res) => {
+        const { data } = await res.json()
+        const { count } = data
+        setCount(count)
+      }
+    )
   }, [])
 
   return (
     <div>
       redis Welcome {count}
-      {UPSTASH_REDIS_REST_URL}
       <div>test</div>
       <button className="btn" onClick={handleIncr}>
         like
