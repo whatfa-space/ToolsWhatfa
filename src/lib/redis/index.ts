@@ -3,7 +3,6 @@ import { Ratelimit } from '@upstash/ratelimit'
 import { Redis } from '@upstash/redis/nodejs'
 
 export const redis = new Redis({
-  // url: 'https://central-rat-35512.upstash.io',
   url: env.UPSTASH_REDIS_REST_URL,
   token: env.UPSTASH_REDIS_REST_TOKEN,
 })

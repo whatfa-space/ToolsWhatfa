@@ -22,10 +22,10 @@ export function buildResponseData<T>({
   return { data, message, success, code }
 }
 
-export function success<T>(data: T) {
+export function Success<T>(data: T) {
   return NextResponse.json(buildResponseData({ data }))
 }
 
-export function fail(message = 'error', code = ResCode.USER_ERROR) {
+export function Fail(message = 'error', code = ResCode.USER_ERROR) {
   return NextResponse.json(buildResponseData({ data: null, message, code }))
 }
