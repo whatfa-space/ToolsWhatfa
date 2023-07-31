@@ -1,4 +1,23 @@
+'use client'
+
+import { getInputValue } from '@/utils/dom'
+import { useRouter } from 'next/navigation'
+import { FormEvent, useCallback, useState } from 'react'
+
 const InputId = () => {
+  const router = useRouter()
+
+  const [clipboardId, setClipboardId] = useState('')
+
+  const handleJoin = useCallback(() => {
+    router.push('/clipboard/' + clipboardId)
+  }, [clipboardId])
+
+  const handleChange = useCallback((event: FormEvent) => {
+    const value = getInputValue(event)
+    setClipboardId(value)
+  }, [])
+
   return (
     <div>
       <p className="text-center">
@@ -9,11 +28,16 @@ const InputId = () => {
         <span className="m-4">或</span>
         <div>
           <input
+            value={clipboardId}
+            onChange={handleChange}
             type="text"
             className="input input-bordered focus:outline-0 rounded-r-none border-r-0"
             placeholder="输入剪切板ID"
           />
-          <button className="btn btn-neutral border-l-0 rounded-l-none no-animation relative -top-[1px]">
+          <button
+            onClick={handleJoin}
+            className="btn btn-neutral border-l-0 rounded-l-none no-animation relative -top-[1px]"
+          >
             加入
           </button>
         </div>
