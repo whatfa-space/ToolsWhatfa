@@ -12,14 +12,14 @@ const ClipBoardView = () => {
   }, [])
 
   return (
-    <div className="mt-2">
+    <div className="mt-4">
       <textarea
         className="textarea textarea-bordered w-full h-64"
         placeholder="请输入内容"
         value={content}
         onChange={onChange}
       />
-      <div className="flex mt-2">
+      <div className="flex mt-4">
         <button className="btn btn-neutral btn-sm mr-5">复制</button>
         <button className="btn btn-outline btn-sm">保存</button>
       </div>

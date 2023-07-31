@@ -10,7 +10,7 @@ export default function page({ params }: PageProps) {
   if (!slug) return <div>id is null</div>
   return (
     <div>
-      hello {slug}
+      <p className="text-center">剪切板ID: {slug}</p>
       <ClipBoardView />
     </div>
   )
