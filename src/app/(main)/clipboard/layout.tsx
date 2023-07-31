@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function Clipboard({ children }: PropsWithChildren) {
   return (
     <>
-      <TagContainer title="在线剪切板" icon="faClipboard">
+      <TagContainer title="在线剪切板(开发中)" icon="faClipboard">
         {children}
       </TagContainer>
     </>

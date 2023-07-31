@@ -13,7 +13,7 @@ export const toolPanels: IToolsPanel[] = [
         icon: 'faQrcode',
       },
       {
-        title: '在线剪切板(wait)',
+        title: '在线剪切板',
         desc: '剪切板在线分享',
         link: '/clipboard',
         icon: 'faClipboard',
