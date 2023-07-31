@@ -13,7 +13,7 @@ export const ToolsPanel: FC<ToolsPanelProps> = ({ toolsPanel }) => (
     icon={toolsPanel.icon}
     key={toolsPanel.title}
     iconClass={toolsPanel.iconClass}
-    className="grid grid-cols-2 gap-2 md:grid-cols-3"
+    className="grid grid-cols-2 gap-3 md:grid-cols-3"
   >
     {toolsPanel.tools.map((tool) => (
       <ToolCard key={tool.title} {...tool} />
