@@ -1,7 +1,7 @@
 import { generateRandomString } from '@/utils'
 import InputId from './InputId'
 
-export default function Clipboard() {
+export default async function Clipboard() {
   const initId = generateRandomString(4)
   return (
     <>
