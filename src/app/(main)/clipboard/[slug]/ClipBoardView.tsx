@@ -3,6 +3,7 @@
 import { saveClipboard } from '@/services/clipboard'
 import { getInputValue } from '@/utils'
 import { FC, FormEvent, useCallback, useState } from 'react'
+import copy from 'copy-to-clipboard'
 
 interface Props {
   initContent: string
@@ -23,8 +24,8 @@ const ClipBoardView: FC<Props> = ({ initContent, id }) => {
   }, [content, id])
 
   const handleCopy = useCallback(() => {
-    //
-  }, [])
+    copy(content)
+  }, [content])
 
   return (
     <div className="mt-4">
