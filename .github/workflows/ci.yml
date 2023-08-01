@@ -11,7 +11,9 @@ jobs:
     steps:
       - name: executing remote ssh commands to develop
         uses: appleboy/ssh-action@master
-        # env:
+        env:
+          UPSTASH_REDIS_REST_TOKEN: ${{secrets.UPSTASH_REDIS_REST_TOKEN}}
+          UPSTASH_REDIS_REST_URL: ${{secrets.UPSTASH_REDIS_REST_URL}}
         #   DATABASE_HOST_NAME: ${{ secrets.DATABASE_HOST_NAME }}
         with:
           host: ${{ secrets.HOST }}

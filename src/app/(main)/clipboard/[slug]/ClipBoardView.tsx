@@ -1,14 +1,29 @@
 'use client'
 
+import { saveClipboard } from '@/services/clipboard'
 import { getInputValue } from '@/utils'
-import { FormEvent, useCallback, useState } from 'react'
+import { FC, FormEvent, useCallback, useState } from 'react'
 
-const ClipBoardView = () => {
-  const [content, setContent] = useState('')
+interface Props {
+  initContent: string
+  id: string
+}
+const ClipBoardView: FC<Props> = ({ initContent, id }) => {
+  const [content, setContent] = useState(initContent)
 
   const onChange = useCallback((event: FormEvent) => {
     const value = getInputValue(event)
     setContent(value)
+  }, [])
+
+  const handleSave = useCallback(() => {
+    saveClipboard(id, content).then(() => {
+      alert('已保存')
+    })
+  }, [content, id])
+
+  const handleCopy = useCallback(() => {
+    //
   }, [])
 
   return (
@@ -20,8 +35,12 @@ const ClipBoardView = () => {
         onChange={onChange}
       />
       <div className="flex mt-4">
-        <button className="btn btn-neutral btn-sm mr-5">复制</button>
-        <button className="btn btn-outline btn-sm">保存</button>
+        <button onClick={handleCopy} className="btn btn-neutral btn-sm mr-5">
+          复制
+        </button>
+        <button onClick={handleSave} className="btn btn-outline btn-sm">
+          保存
+        </button>
       </div>
     </div>
   )

@@ -1,7 +1,6 @@
 'use client'
 
 import { getInputValue } from '@/utils/dom'
-import { generateRandomString } from '@/utils/random'
 import { useRouter } from 'next/navigation'
 import { FormEvent, useCallback, useState } from 'react'
 
@@ -9,19 +8,22 @@ const getClipboardUrl = (clipboardId: string) => {
   return '/clipboard/' + clipboardId
 }
 
-const InputId = () => {
+interface Props {
+  initId: string
+}
+const InputId = ({ initId }: Props) => {
   const router = useRouter()
 
-  const [clipboardId, setClipboardId] = useState(generateRandomString(6))
+  const [clipboardId, setClipboardId] = useState(initId)
 
-  const handleCreate = useCallback(() => {
-    const randomId = generateRandomString(6)
-    router.push(getClipboardUrl(randomId))
-  }, [])
+  // const handleCreate = useCallback(() => {
+  //   const randomId = generateRandomString(6)
+  //   router.push(getClipboardUrl(randomId))
+  // }, [])
 
   const handleJoin = useCallback(() => {
     router.push(getClipboardUrl(clipboardId))
-  }, [clipboardId])
+  }, [clipboardId, router])
 
   const handleChange = useCallback((event: FormEvent) => {
     const value = getInputValue(event)
@@ -34,10 +36,10 @@ const InputId = () => {
         在多个页面上打开同一剪贴板，轻松将文本从一台计算机复制到另一台计算机！
       </p>
       <div className="flex flex-col mt-5 items-center justify-center md:flex-row">
-        <button onClick={handleCreate} className="btn">
+        {/* <button onClick={handleCreate} className="btn">
           创建新剪切板
         </button>
-        <span className="m-4">或</span>
+        <span className="m-4">或</span> */}
         <div>
           <input
             value={clipboardId}
