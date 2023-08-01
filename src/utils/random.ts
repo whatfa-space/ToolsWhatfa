@@ -16,3 +16,7 @@ export function generateRandomString(n: number) {
 
   return randomString
 }
+
+export async function awaitGenerateRandomString(n: number) {
+  return generateRandomString(n)
+}
