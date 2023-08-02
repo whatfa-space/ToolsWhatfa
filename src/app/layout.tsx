@@ -11,8 +11,7 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'tools whatfa',
   description: '在线工具',
-  // @ts-ignore
-  referrer: 'unsafe-url',
+  referrer: 'strict-origin-when-cross-origin',
 }
 
 export default function RootLayout({
