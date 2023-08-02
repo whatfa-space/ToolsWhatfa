@@ -6,6 +6,9 @@ interface PageProps {
     slug: string
   }
 }
+
+export const dynamic = 'force-dynamic'
+
 export default async function page({ params }: PageProps) {
   const { slug: id } = params
   if (!id) return <div>id is null</div>
