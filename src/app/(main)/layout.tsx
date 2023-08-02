@@ -6,6 +6,8 @@ import { Root } from '@/components/layout/root/Root'
 export const metadata: Metadata = {
   title: 'tools whatfa',
   description: '在线工具',
+  // @ts-ignore
+  referrer: 'unsafe-url',
 }
 
 export default function RootLayout({
