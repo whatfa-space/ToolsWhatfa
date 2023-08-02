@@ -6,10 +6,13 @@ interface ClipboardRes {
 }
 
 export async function getClipboard(id: string): Promise<ClipboardRes> {
-  const res = await fetch(url('/api/clipboard?id=' + id+'&r='+Math.random()), {
-    method: 'GET',
-    cache: 'no-cache',
-  })
+  const res = await fetch(
+    url('/api/clipboard?id=' + id + '&r=' + Math.random()),
+    {
+      method: 'GET',
+      cache: 'no-cache',
+    }
+  )
   const { data } = await res.json()
   return data
 }
