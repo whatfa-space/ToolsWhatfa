@@ -1,10 +1,11 @@
 'use client'
 
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { BackBtn } from '@/components/biz/back-btn'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 
 export default function Header() {
+  const router = useRouter()
   const pathName = usePathname()
   const [isSticky, setIsSticky] = useState(false)
 
@@ -36,12 +37,20 @@ export default function Header() {
     [isSticky]
   )
 
+  const handleBack = useCallback(() => {
+    if (history.length > 1) {
+      router.back()
+    } else {
+      router.push('/')
+    }
+  }, [])
+
   return (
     <>
       <header
         className={`${headerClass} w-full transform-gpu px-6 py-2  flex items-center justify-between fixed top-0 z-50 `}
       >
-        {showBackBtn && <BackBtn />}
+        {showBackBtn && <BackBtn onClick={handleBack} />}
         <div className="text-xl md:text-2xl flex-1 text-center">
           ToolsWhatfa - 免费工具
         </div>
