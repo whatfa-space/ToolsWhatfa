@@ -1,8 +1,6 @@
 import { generateRandomString } from '@/utils'
 import InputId from './InputId'
 
-// export const dynamic = 'force-dynamic'
-
 export default function Clipboard() {
   const initId = generateRandomString(4)
   return (

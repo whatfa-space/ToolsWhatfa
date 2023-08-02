@@ -1,6 +1,5 @@
 'use client'
 
-// import { generateRandomString } from '@/utils'
 import { getInputValue } from '@/utils/dom'
 import { useRouter } from 'next/navigation'
 import { FormEvent, useCallback, useState } from 'react'
@@ -36,7 +35,7 @@ const InputId = ({ initId }: Props) => {
 
   return (
     <div>
-      <p className="text-center">
+      <p className="text-center mt-2">
         在多个页面上打开同一剪贴板，轻松将文本从一台计算机复制到另一台计算机！
       </p>
       <div className="flex flex-col mt-5 items-center justify-center md:flex-row">

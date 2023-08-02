@@ -1,6 +1,6 @@
 'use client'
 
-import { saveClipboard } from '@/services/clipboard'
+import { getClipboard, saveClipboard } from '@/services/clipboard'
 import { getInputValue } from '@/utils'
 import { FC, FormEvent, useCallback, useState } from 'react'
 import copy from 'copy-to-clipboard'
@@ -28,6 +28,12 @@ const ClipBoardView: FC<Props> = ({ initContent, id }) => {
     copy(content)
   }, [content])
 
+  const handleRefresh = useCallback(() => {
+    getClipboard(id).then((val) => {
+      setContent(val.content)
+    })
+  }, [content])
+
   return (
     <div className="mt-4">
       <textarea
@@ -39,6 +45,9 @@ const ClipBoardView: FC<Props> = ({ initContent, id }) => {
       <div className="flex mt-4">
         <button onClick={handleCopy} className="btn btn-neutral btn-sm mr-5">
           复制
+        </button>
+        <button onClick={handleRefresh} className="btn btn-outline btn-sm mr-5">
+          刷新
         </button>
         <button onClick={handleSave} className="btn btn-outline btn-sm">
           保存
