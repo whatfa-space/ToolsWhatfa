@@ -30,7 +30,7 @@ export async function POST(req: NextRequest) {
   }
   const key = getKey(id)
   const res = await redis.set(key, content, {
-    EX: days2Seconds(2),
+    EX: days2Seconds(1),
   })
   // const res = await upstashRedis.set<string>(key, content, {
   //   ex: days2Seconds(2),
