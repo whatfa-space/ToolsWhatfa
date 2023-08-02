@@ -9,6 +9,9 @@ interface Props {
   initContent: string
   id: string
 }
+
+export const dynamic = 'force-dynamic'
+
 const ClipBoardView: FC<Props> = ({ initContent, id }) => {
   const [content, setContent] = useState(initContent)
 
