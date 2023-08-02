@@ -28,6 +28,10 @@ const ClipBoardView: FC<Props> = ({ initContent, id }) => {
     copy(content)
   }, [content])
 
+  const handleCopyId = useCallback(() => {
+    copy(id)
+  }, [content])
+
   const handleRefresh = useCallback(() => {
     getClipboard(id).then((val) => {
       setContent(val.content)
@@ -35,9 +39,20 @@ const ClipBoardView: FC<Props> = ({ initContent, id }) => {
   }, [content])
 
   return (
-    <div className="mt-4">
+    <div>
+      <p className="text-center text-lg">
+        剪切板ID:{' '}
+        <span
+          onClick={handleCopyId}
+          className="text-accent text-xl cursor-pointer hover:text-accent-focus tooltip select-none"
+          data-tip="点击复制"
+        >
+          {id}
+        </span>
+      </p>
+
       <textarea
-        className="textarea textarea-bordered w-full h-64"
+        className="textarea textarea-bordered w-full h-64 mt-4"
         placeholder="请输入内容"
         value={content}
         onChange={onChange}

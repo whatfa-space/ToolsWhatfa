@@ -19,7 +19,6 @@ export default async function page({ params }: PageProps) {
   }
   return (
     <div>
-      <p className="text-center">剪切板ID: {id}</p>
       <ClipBoardView initContent={content} id={id} />
     </div>
   )
