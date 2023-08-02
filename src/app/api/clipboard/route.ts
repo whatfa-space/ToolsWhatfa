@@ -7,7 +7,7 @@ const getKey = (clipboardId: string) => {
 }
 
 export const dynamic = 'force-dynamic'
-
+export const revalidate = 1
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url)
   const id = searchParams.get('id')
