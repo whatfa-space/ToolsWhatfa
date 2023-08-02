@@ -38,7 +38,12 @@ export default function Header() {
   )
 
   const handleBack = useCallback(() => {
-    if (history.length > 1) {
+    let checkLen = 2
+    // TODO: arc
+    if (navigator.userAgent.indexOf('Macintosh') > -1) {
+      checkLen = 2
+    }
+    if (history.length > checkLen) {
       router.back()
     } else {
       router.push('/')
