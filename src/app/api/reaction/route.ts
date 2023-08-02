@@ -1,4 +1,4 @@
-import { ratelimit, redis } from '@/lib/redis'
+import { ratelimit, upstashRedis } from '@/lib/redis'
 import { Fail, Success } from '@/utils/response'
 import { NextRequest } from 'next/server'
 
@@ -22,7 +22,7 @@ export async function GET(req: NextRequest) {
     // })
   }
 
-  const count = (await redis.get<number>(key)) || 0
+  const count = (await upstashRedis.get<number>(key)) || 0
   console.log('get reactions', key, count)
 
   return Success({ key, count })
@@ -41,7 +41,7 @@ export async function PATCH(req: NextRequest) {
     return Fail('Too Many Requests')
   }
 
-  const count = await redis.incr(key)
+  const count = await upstashRedis.incr(key)
   console.log('get reactions', key, count)
   return Success({ key, count })
 }

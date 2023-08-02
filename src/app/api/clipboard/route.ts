@@ -1,4 +1,4 @@
-import { redis } from '@/lib/redis'
+import { upstashRedis } from '@/lib/redis'
 import { days2Seconds, Fail, Success } from '@/utils'
 import { NextRequest } from 'next/server'
 
@@ -12,7 +12,7 @@ export async function GET(req: NextRequest) {
     return Fail('missing id')
   }
   const key = getKey(id)
-  const content = (await redis.get<string>(key)) || ''
+  const content = (await upstashRedis.get<string>(key)) || ''
   return Success({ content, id })
 }
 
@@ -27,7 +27,7 @@ export async function POST(req: NextRequest) {
     return Fail('missing id')
   }
   const key = getKey(id)
-  const res = await redis.set<string>(key, content, {
+  const res = await upstashRedis.set<string>(key, content, {
     ex: days2Seconds(2),
   })
   if (res !== 'OK') {
