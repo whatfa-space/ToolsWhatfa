@@ -30,13 +30,13 @@ const ClipBoardView: FC<Props> = ({ initContent, id }) => {
 
   const handleCopyId = useCallback(() => {
     copy(id)
-  }, [content])
+  }, [id])
 
   const handleRefresh = useCallback(() => {
     getClipboard(id).then((val) => {
       setContent(val.content)
     })
-  }, [content])
+  }, [content, id])
 
   return (
     <div>
