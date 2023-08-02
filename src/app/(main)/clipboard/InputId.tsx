@@ -1,8 +1,9 @@
 'use client'
 
+import { generateRandomString } from '@/utils'
 import { getInputValue } from '@/utils/dom'
 import { useRouter } from 'next/navigation'
-import { FormEvent, useCallback, useState } from 'react'
+import { FormEvent, useCallback, useEffect, useState } from 'react'
 
 const getClipboardUrl = (clipboardId: string) => {
   return '/clipboard/' + clipboardId
@@ -28,6 +29,9 @@ const InputId = ({ initId }: Props) => {
   const handleChange = useCallback((event: FormEvent) => {
     const value = getInputValue(event)
     setClipboardId(value)
+  }, [])
+  useEffect(() => {
+    setClipboardId(generateRandomString(4))
   }, [])
 
   return (
