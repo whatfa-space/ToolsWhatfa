@@ -1,5 +1,6 @@
 import { generateRandomString, Success } from '@/utils'
 
 export function GET() {
-  return Success({ random: generateRandomString(4) })
+  const random = generateRandomString(4)
+  return Success({ random })
 }
