@@ -8,7 +8,7 @@ interface ClipboardRes {
 export async function getClipboard(id: string): Promise<ClipboardRes> {
   const res = await fetch(url('/api/clipboard?id=' + id), {
     method: 'GET',
-    cache: 'no-store',
+    cache: 'no-cache',
   })
   const { data } = await res.json()
   return data
@@ -20,7 +20,7 @@ export async function saveClipboard(
 ): Promise<ClipboardRes> {
   const res = await fetch(url('/api/clipboard'), {
     method: 'POST',
-    cache: 'no-store',
+    cache: 'no-cache',
     headers: {
       'Content-Type': 'application/json',
     },
