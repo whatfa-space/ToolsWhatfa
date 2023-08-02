@@ -1,11 +1,10 @@
-import { redis } from '@/lib/redis'
+import { redis, upstashRedis } from '@/lib/redis'
 import { days2Seconds, Fail, Success } from '@/utils'
 import { NextRequest } from 'next/server'
 
 const getKey = (clipboardId: string) => {
   return `clipboard:${clipboardId}`
 }
-
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url)
   const id = searchParams.get('id')
@@ -13,8 +12,7 @@ export async function GET(req: NextRequest) {
     return Fail('missing id')
   }
   const key = getKey(id)
-  // const content = (await upstashRedis.get<string>(key)) || ''
-  const content = (await redis.get(key)) || ''
+  const content = (await upstashRedis.get<string>(key)) || ''
   return Success({ content, id })
 }
 
@@ -32,6 +30,7 @@ export async function POST(req: NextRequest) {
   const res = await redis.set(key, content, {
     EX: days2Seconds(2),
   })
+
   // const res = await upstashRedis.set<string>(key, content, {
   //   ex: days2Seconds(2),
   // })
