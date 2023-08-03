@@ -1,6 +1,6 @@
 const ClipboardTip = () => {
   return (
-    <details className="collapse collapse-arrow border-[0.5px] border-[#e5e7eb]/0.1">
+    <details className="collapse collapse-arrow border-[0.5px] border-[#e5e7eb]/60 ">
       <summary className="collapse-title select-none">点击查看介绍</summary>
       <div className="collapse-content">
         <article className="prose">
