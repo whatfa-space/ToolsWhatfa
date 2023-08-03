@@ -33,7 +33,9 @@ export default function Header() {
 
   const headerClass = useMemo(
     () =>
-      isSticky ? '  [backdrop-filter:saturate(180%)_blur(20px)] border-b' : '',
+      isSticky
+        ? '  [backdrop-filter:saturate(180%)_blur(20px)] border-b border-b-[#e5e7eb]/60 '
+        : '',
     [isSticky]
   )
 
