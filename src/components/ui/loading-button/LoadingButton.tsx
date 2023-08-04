@@ -28,9 +28,11 @@ const LoadingButton = ({
     if (loading) return
     setLoading(true)
     onSubmit?.().finally(() => {
-      setLoading(false)
+      setTimeout(() => {
+        setLoading(false)
+      }, 700)
     })
-  }, [onSubmit])
+  }, [onSubmit, loading])
   return (
     <button
       onClick={handleClick}
@@ -39,7 +41,7 @@ const LoadingButton = ({
     >
       <span
         className={`loading loading-spinner loading-sm transition-all duration-700 ${
-          loading ? 'opacity-100' : 'opacity-0 hidden'
+          loading ? 'opacity-100' : 'opacity-0 w-0'
         }`}
       />
       {children}
