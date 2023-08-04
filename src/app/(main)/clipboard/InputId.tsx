@@ -48,7 +48,7 @@ const InputId = ({ initId }: Props) => {
             value={clipboardId}
             onChange={handleChange}
             type="text"
-            className="input input-bordered focus:outline-0 rounded-r-none border-r-0"
+            className="input input-bordered focus:outline-0 rounded-r-none border-r-0 w-full"
             placeholder="输入剪切板ID"
           />
           <button
