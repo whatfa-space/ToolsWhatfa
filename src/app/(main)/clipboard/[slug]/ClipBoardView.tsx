@@ -4,6 +4,7 @@ import { getClipboard, saveClipboard } from '@/services/clipboard'
 import { getInputValue } from '@/utils'
 import { FC, FormEvent, useCallback, useState } from 'react'
 import copy from 'copy-to-clipboard'
+import LoadingButton from '@/components/ui/loading-button'
 
 interface Props {
   initContent: string
@@ -19,9 +20,10 @@ const ClipBoardView: FC<Props> = ({ initContent, id }) => {
   }, [])
 
   const handleSave = useCallback(() => {
-    saveClipboard(id, content).then(() => {
-      alert('已保存')
-    })
+    return saveClipboard(id, content)
+    // .then(() => {
+    //   alert('已保存')
+    // })
   }, [content, id])
 
   const handleCopy = useCallback(() => {
@@ -64,9 +66,7 @@ const ClipBoardView: FC<Props> = ({ initContent, id }) => {
         <button onClick={handleRefresh} className="btn btn-outline btn-sm mr-5">
           刷新
         </button>
-        <button onClick={handleSave} className="btn btn-outline btn-sm">
-          保存
-        </button>
+        <LoadingButton onSubmit={handleSave}>保存</LoadingButton>
       </div>
     </div>
   )
