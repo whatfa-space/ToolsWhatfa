@@ -43,7 +43,7 @@ const InputId = ({ initId }: Props) => {
           创建新剪切板
         </button>
         <span className="m-4">或</span> */}
-        <div>
+        <div className="flex">
           <input
             value={clipboardId}
             onChange={handleChange}
@@ -53,7 +53,7 @@ const InputId = ({ initId }: Props) => {
           />
           <button
             onClick={handleJoin}
-            className="btn btn-neutral border-l-0 rounded-l-none no-animation relative -top-[1px]"
+            className="btn btn-neutral border-l-0 rounded-l-none no-animation relative"
           >
             加入
           </button>
