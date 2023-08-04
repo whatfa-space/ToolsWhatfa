@@ -39,12 +39,14 @@ const LoadingButton = ({
       className={`btn btn-outline btn-sm ${className}`}
       {...rest}
     >
-      <span
-        className={`loading loading-spinner loading-sm transition-all duration-700 ${
-          loading ? 'opacity-100' : 'opacity-0 w-0'
-        }`}
-      />
-      {children}
+      <div className="flex items-center">
+        <span
+          className={`loading loading-spinner loading-xs transition-all duration-700 ${
+            loading ? 'opacity-100 mr-1' : 'opacity-0 w-0'
+          }`}
+        />
+        <div>{children}</div>
+      </div>
     </button>
   )
 }
