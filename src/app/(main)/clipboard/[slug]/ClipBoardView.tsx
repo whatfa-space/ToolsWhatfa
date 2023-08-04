@@ -21,9 +21,6 @@ const ClipBoardView: FC<Props> = ({ initContent, id }) => {
 
   const handleSave = useCallback(() => {
     return saveClipboard(id, content)
-    // .then(() => {
-    //   alert('已保存')
-    // })
   }, [content, id])
 
   const handleCopy = useCallback(() => {
@@ -35,7 +32,7 @@ const ClipBoardView: FC<Props> = ({ initContent, id }) => {
   }, [id])
 
   const handleRefresh = useCallback(() => {
-    getClipboard(id).then((val) => {
+    return getClipboard(id).then((val) => {
       setContent(val.content)
     })
   }, [content, id])
@@ -63,9 +60,9 @@ const ClipBoardView: FC<Props> = ({ initContent, id }) => {
         <button onClick={handleCopy} className="btn btn-neutral btn-sm mr-5">
           复制
         </button>
-        <button onClick={handleRefresh} className="btn btn-outline btn-sm mr-5">
+        <LoadingButton onSubmit={handleRefresh} className="mr-5">
           刷新
-        </button>
+        </LoadingButton>
         <LoadingButton onSubmit={handleSave}>保存</LoadingButton>
       </div>
     </div>

@@ -1,5 +1,3 @@
-'use client'
-
 import {
   ButtonHTMLAttributes,
   DetailedHTMLProps,
@@ -30,7 +28,7 @@ const LoadingButton = ({
     onSubmit?.().finally(() => {
       setTimeout(() => {
         setLoading(false)
-      }, 700)
+      }, 300)
     })
   }, [onSubmit, loading])
   return (
@@ -41,7 +39,7 @@ const LoadingButton = ({
     >
       <div className="flex items-center">
         <span
-          className={`loading loading-spinner loading-xs transition-all duration-700 ${
+          className={`loading loading-spinner loading-xs transition-all duration-300 ${
             loading ? 'opacity-100 mr-1' : 'opacity-0 w-0'
           }`}
         />
