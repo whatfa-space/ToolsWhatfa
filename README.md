@@ -46,3 +46,4 @@ wait list
 - [ ] feedback
 - [ ] friends' links
 - [ ] Image compression
+- [ ] Jitsu: user behavior analysis
