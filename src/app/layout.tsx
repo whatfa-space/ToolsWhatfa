@@ -25,7 +25,7 @@ export default function RootLayout({
         <Baidu />
       </head>
 
-      <body className={clsxm(inter.className, 'font-serif')}>
+      <body className={clsxm(inter.className, 'font-mono')}>
         <ClientProvider>{children}</ClientProvider>
       </body>
     </html>
