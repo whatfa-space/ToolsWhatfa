@@ -46,4 +46,4 @@ wait list
 - [ ] feedback
 - [ ] friends' links
 - [ ] Image compression
-- [ ] Jitsu: user behavior analysis
+- [x] Jitsu: user behavior analysis. url: https://use.jitsu.com
