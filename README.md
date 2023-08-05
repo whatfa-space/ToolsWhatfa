@@ -47,3 +47,4 @@ wait list
 - [ ] friends' links
 - [ ] Image compression
 - [x] Jitsu: user behavior analysis. url: https://use.jitsu.com
+- [ ] pdf to word/doc
