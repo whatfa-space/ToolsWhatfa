@@ -22,6 +22,7 @@
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
+    "@jitsu/jitsu-react": "^1.2.1",
     "@tailwindcss/typography": "^0.5.9",
     "@types/node": "20.3.1",
     "@types/react": "18.2.12",
