@@ -8,10 +8,10 @@ export const BackBtn = ({
 }: HTMLAttributes<HTMLDivElement>) => {
   return (
     <div
-      className={`btn btn-circle btn-outline border-zinc-200/80 btn-sm text-sm ${className}`}
+      className={`btn btn-circle btn-outline border-zinc-200/80 btn-sm text-sm p-2  md:btn-md md:p-3 transition-all ${className}`}
       {...rest}
     >
-      <FontAwesomeIcon icon={faArrowLeft} width={14} height={14} />
+      <FontAwesomeIcon icon={faArrowLeft} className="w-full h-full" />
     </div>
   )
 }

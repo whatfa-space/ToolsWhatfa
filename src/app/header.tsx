@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { BackBtn } from '@/components/biz/back-btn'
 import { usePathname, useRouter } from 'next/navigation'
+import Menu from '@/components/layout/menu'
 
 export default function Header() {
   const router = useRouter()
@@ -57,10 +58,11 @@ export default function Header() {
       <header
         className={`${headerClass} w-full transform-gpu px-6 py-2  flex items-center justify-between fixed top-0 z-50 `}
       >
-        {showBackBtn && <BackBtn onClick={handleBack} />}
+        <Menu />
         <div className="text-xl md:text-2xl flex-1 text-center">
           ToolsWhatfa - 免费工具
         </div>
+        {showBackBtn && <BackBtn onClick={handleBack} />}
       </header>
       <div ref={headerRef}></div>
     </>
