@@ -189,7 +189,7 @@ const twConfig: Config = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   daisyui: {
-    themes: ['light', 'dark', 'cupcake', 'wireframe', 'cmyk'],
+    themes: ['light', 'dark'],
     // themes: [
     //   {
     //     light: {

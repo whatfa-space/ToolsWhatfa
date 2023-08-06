@@ -1,3 +1,7 @@
+import Line from '@/components/biz/line/Line'
+import { HomeIcon } from '@/components/icon/HomeIcon'
+import Link from 'next/link'
+
 const Menu = () => {
   return (
     <div className="drawer w-0">
@@ -23,11 +27,14 @@ const Menu = () => {
       <div className="drawer-side">
         <label htmlFor="my-drawer-3" className="drawer-overlay"></label>
         <ul className="menu p-4 w-80 h-full bg-base-200">
+          <p className="text-center text-lg font-medium">
+            ToolsWhatfa - 免费工具
+          </p>
+          <Line />
           <li>
-            <a>Sidebar Item 1</a>
-          </li>
-          <li>
-            <a>Sidebar Item 2</a>
+            <Link href="/" target="_top">
+              <HomeIcon className="s text-sm w-[15px] h-[15px]" /> 返回首页
+            </Link>
           </li>
         </ul>
       </div>
