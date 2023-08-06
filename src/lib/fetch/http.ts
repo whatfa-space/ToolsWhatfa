@@ -27,10 +27,10 @@ export class Http {
   //   id,
   //   content,
   // }),
-  request = (url: string, opt: RequestOption) => {
+  request = <T>(url: string, opt: RequestOption): Promise<T> => {
     const _opt = { ...this.opt, ...opt }
-    const { params, method, data } = _opt
-    const _url = params ? buildUrlWithParams(url, params) : url
+    const { params, method, data, host } = _opt
+    const _url = params ? buildUrlWithParams(host + url, params) : url
 
     return fetch(_url, {
       headers: {
@@ -44,10 +44,15 @@ export class Http {
       return data
     })
   }
-  PATCH = () => {}
+  PATCH = <T>(url: string, { params }: GetOpt) => {
+    return this.request<T>(url, {
+      params,
+      method: 'PATCH',
+    })
+  }
   POST = () => {}
-  GET = (url: string, { params }: GetOpt) => {
-    return this.request(url, {
+  GET = <T>(url: string, { params }: GetOpt) => {
+    return this.request<T>(url, {
       params,
     })
   }
