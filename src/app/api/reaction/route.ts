@@ -24,7 +24,7 @@ export async function GET(req: NextRequest) {
 
   // const count = (await upstashRedis.get<number>(key)) || 0
   const _count = (await redis.get(key)) || ''
-  const count = parseInt(_count)
+  const count = parseInt(_count) || 0
   console.log('get reactions', key, count)
 
   return Success({ key, count })
