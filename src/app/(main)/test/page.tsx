@@ -10,7 +10,7 @@ export default async function Test() {
     //   cache: 'no-store', // 不缓存
     // })
     // const { data } = await res.json()
-    const data = await getReaction(id)
+    const data = (await getReaction(id)) as any
     if (Number.isInteger(data.count)) {
       reaction = data.count
     }
