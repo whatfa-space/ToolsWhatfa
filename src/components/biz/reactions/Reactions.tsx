@@ -1,7 +1,8 @@
 'use client'
 import { LikeIcon } from '@/components/icon/LikeIcon'
 import { reaction } from '@/services/reactions'
-import { useCallback, useState } from 'react'
+import { prettifyNumber } from '@/utils/math'
+import { useCallback, useMemo, useState } from 'react'
 
 interface ReactionsProps {
   id: string
@@ -15,13 +16,19 @@ export const Reactions = ({ id, count: likeNum }: ReactionsProps) => {
       setCount(res.count)
     })
   }, [])
+
+  const countPretty = useMemo(() => {
+    return prettifyNumber(102292)
+  }, [count])
   return (
-    <div
-      onClick={handleLike}
-      className="cursor-pointer flex justify-center select-none my-2"
-    >
-      <LikeIcon />
-      <span>{count}</span>
+    <div className=" flex justify-center">
+      <div
+        className="cursor-pointer select-none border rounded-full w-16 h-16 flex flex-col justify-center items-center my-3 hover:scale-125 transition-all"
+        onClick={handleLike}
+      >
+        <LikeIcon />
+        <span>{countPretty}</span>
+      </div>
     </div>
   )
 }
