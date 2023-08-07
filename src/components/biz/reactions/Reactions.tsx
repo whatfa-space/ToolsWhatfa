@@ -3,6 +3,7 @@ import { LikeIcon } from '@/components/icon/LikeIcon'
 import { reaction } from '@/services/reactions'
 import { prettifyNumber } from '@/utils/math'
 import { useCallback, useMemo, useState } from 'react'
+import { motion } from 'framer-motion'
 
 interface ReactionsProps {
   id: string
@@ -22,13 +23,17 @@ export const Reactions = ({ id, count: likeNum }: ReactionsProps) => {
   }, [count])
   return (
     <div className=" flex justify-center">
-      <div
-        className="cursor-pointer select-none border rounded-full w-16 h-16 flex flex-col justify-center items-center my-3 hover:scale-125 transition-all"
+      <motion.button
+        type="button"
+        className="cursor-pointer select-none border rounded-full w-16 h-16 flex flex-col justify-center items-center my-3 transition-all"
+        whileTap={{
+          scale: 1.3,
+        }}
         onClick={handleLike}
       >
         <LikeIcon />
         <span>{countPretty}</span>
-      </div>
+      </motion.button>
     </div>
   )
 }
