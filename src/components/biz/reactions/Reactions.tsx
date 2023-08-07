@@ -18,7 +18,7 @@ export const Reactions = ({ id, count: likeNum }: ReactionsProps) => {
   }, [])
 
   const countPretty = useMemo(() => {
-    return prettifyNumber(102292)
+    return prettifyNumber(count)
   }, [count])
   return (
     <div className=" flex justify-center">
