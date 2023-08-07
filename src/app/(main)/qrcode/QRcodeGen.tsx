@@ -105,7 +105,7 @@ export const QRcodeGen = () => {
         onClose={() => setVisible(false)}
         index={0}
       />
-      <div className="border shadow w-52 h-52 relative">
+      <div className="border shadow w-52 h-52 relative shrink-0">
         <Image
           style={{ display: loading ? 'none' : 'block' }}
           className="cursor-pointer"
