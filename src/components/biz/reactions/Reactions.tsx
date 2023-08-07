@@ -1,6 +1,6 @@
 'use client'
 import { LikeIcon } from '@/components/icon/LikeIcon'
-import { getReaction, reaction } from '@/services/reactions'
+import { reaction } from '@/services/reactions'
 import { useCallback, useState } from 'react'
 
 interface ReactionsProps {
@@ -8,15 +8,12 @@ interface ReactionsProps {
   count: number
 }
 
-// export const dynamic = 'force-dynamic'
-
 export const Reactions = ({ id, count: likeNum }: ReactionsProps) => {
   const [count, setCount] = useState<number>(likeNum)
   const handleLike = useCallback(() => {
     reaction(id).then((res) => {
       setCount(res.count)
     })
-    getReaction(id)
   }, [])
   return (
     <div
