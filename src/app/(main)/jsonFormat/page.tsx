@@ -3,8 +3,11 @@
 import { TagContainer } from '@/components/layout/tag-container'
 import { useCallback, useState } from 'react'
 import copy from 'copy-to-clipboard'
+import { getReaction, Reactions as ReactionsRes } from '@/services/reactions'
+import Reactions from '@/components/biz/reactions'
 
-export default function JsonFormat() {
+export default async function JsonFormat() {
+  const reactionKey = 'json_format'
   const [json, setJson] = useState('')
   const [tsResult, setTsResult] = useState('')
 
@@ -26,10 +29,17 @@ export default function JsonFormat() {
     copy(tsResult)
   }, [tsResult])
 
+  let data: ReactionsRes = { count: 0, key: '' }
+  try {
+    data = await getReaction(reactionKey)
+  } catch (err) {
+    console.log('layout getReaction', err)
+  }
   return (
     // <main className="p-6 pt-14">
     <TagContainer title="json格式化">
       <h2 className="m-1">在线Json格式化工具</h2>
+      <Reactions id={reactionKey} count={data.count} />
       <textarea
         value={json}
         onChange={onInput}
