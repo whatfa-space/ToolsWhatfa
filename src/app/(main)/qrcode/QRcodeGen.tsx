@@ -7,6 +7,8 @@ import QrCodeWithLogo2 from 'qr-code-with-logo'
 import { FormEvent, useCallback, useEffect, useRef, useState } from 'react'
 import debounce from 'lodash/debounce'
 import { PhotoSlider } from 'react-image-previewer'
+import { QRcodeType, useQRcodeStore } from '@/store/qrcode'
+import { getQrcodeForage } from '@/forage/qrcode'
 
 const initUrlText = 'https://tools.whatfa.com/'
 
@@ -16,8 +18,10 @@ export const QRcodeGen = () => {
   const [loading, setLoading] = useState(true)
   const codeImgRef = useRef<HTMLImageElement>(null)
 
+  const addRecord = useQRcodeStore((state) => state.addRecord)
+
   const getCode = () => {
-    if (codeImgRef.current) {
+    if (codeImgRef.current?.src) {
       return codeImgRef.current.src
     }
     return ''
@@ -46,6 +50,20 @@ export const QRcodeGen = () => {
   const handleGen = debounce(
     () => {
       setText(inputText)
+      setTimeout(async () => {
+        const code = getCode()
+        // type: QRcodeType
+        // /** 原内容 */
+        // content: string
+        // id: string
+        const id = new Date().getTime().toString()
+        await getQrcodeForage()?.setItem(id, code)
+        addRecord({
+          type: QRcodeType.BASE64,
+          content: inputText,
+          id,
+        })
+      }, 1000)
       console.log('handleGen')
     },
     300,
@@ -62,7 +80,7 @@ export const QRcodeGen = () => {
   }
 
   useEffect(() => {
-    handleBind().then(() => setLoading(false))
+    handleBind({}).then(() => setLoading(false))
   }, [handleBind])
 
   const [visible, setVisible] = useState(false)

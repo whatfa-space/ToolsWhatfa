@@ -4,10 +4,11 @@ export enum QRcodeType {
 }
 export interface QRcodeRecord {
   /** 图片 */
-  data: string
+  // data: string
   type: QRcodeType
   /** 原内容 */
   content: string
+  id: string
 }
 export interface QRcodeState {
   history: QRcodeRecord[]

@@ -2,7 +2,7 @@ import Reactions from '@/components/biz/reactions'
 import { TagContainer } from '@/components/layout/tag-container'
 import { getReaction, Reactions as ReactionsRes } from '@/services/reactions'
 import { Metadata } from 'next'
-// import History from './history'
+import History from './history'
 import CodeImgGen from './QRcodeGen'
 
 export const metadata: Metadata = {
@@ -27,9 +27,9 @@ export default async function JsonFormat() {
         <Reactions id={reactionKey} count={data.count} />
         <CodeImgGen />
       </TagContainer>
-      {/* <TagContainer title='历史' icon='faClockRotateLeft'>
-        <History/>
-      </TagContainer> */}
+      <TagContainer title="历史" icon="faClockRotateLeft">
+        <History />
+      </TagContainer>
     </>
   )
 }
