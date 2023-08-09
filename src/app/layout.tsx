@@ -1,11 +1,12 @@
 import '@/styles/index.css'
+import 'react-toastify/dist/ReactToastify.css'
 import { Inter } from 'next/font/google'
 import { Metadata } from 'next'
 
 import ClientProvider from '@/providers/clientProvider'
 import { clsxm } from '@/lib/helper/clsx'
 import Baidu from '@/components/baidu'
-
+import TToastContainer from '@/components/common/TToastContainer'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -27,6 +28,7 @@ export default function RootLayout({
 
       <body className={clsxm(inter.className, 'font-mono')}>
         <ClientProvider>{children}</ClientProvider>
+        <TToastContainer />
       </body>
     </html>
   )

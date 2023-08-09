@@ -1,5 +1,6 @@
 import { getReaction } from '@/services/test'
 import TestRedis from './TestRedis'
+import TestToast from './TestToast'
 
 export default async function Test() {
   const id = '123'
@@ -21,6 +22,7 @@ export default async function Test() {
 
   return (
     <div>
+      <TestToast />
       <TestRedis reaction={reaction} id={id} />
     </div>
   )
