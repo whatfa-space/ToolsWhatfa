@@ -1,10 +1,15 @@
 import { buildUrlWithParams } from './util'
 
+interface Interceptors {
+  response: <T>(res: T) => Promise<T>
+}
+
 export type RequestOption = Partial<{
   host: string
   params: Params
   method: Method
   data: any
+  interceptors: Interceptors
 }>
 
 type Method = 'GET' | 'POST' | 'PATCH' | 'DELETE'
@@ -29,7 +34,8 @@ export class Http {
   // }),
   request = <T>(url: string, opt: RequestOption): Promise<T> => {
     const _opt = { ...this.opt, ...opt }
-    const { params, method, data, host } = _opt
+    const { params, method, data, host, interceptors } = _opt
+    const { response } = interceptors || {}
     const _url = params ? buildUrlWithParams(host + url, params) : url
 
     return fetch(_url, {
@@ -40,7 +46,9 @@ export class Http {
       cache: 'no-store',
       body: data ? JSON.stringify(data) : undefined,
     }).then(async (res) => {
-      const { data } = await res.json()
+      const resData = await res.json()
+      const { data } = resData
+      if (response) return (await response(resData)).data
       return data
     })
   }
