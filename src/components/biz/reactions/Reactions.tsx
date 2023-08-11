@@ -13,9 +13,11 @@ interface ReactionsProps {
 export const Reactions = ({ id, count: likeNum }: ReactionsProps) => {
   const [count, setCount] = useState<number>(likeNum)
   const handleLike = useCallback(() => {
-    reaction(id).then((res) => {
-      setCount(res.count)
-    })
+    reaction(id)
+      .then((res) => {
+        setCount(res.count)
+      })
+      .catch(() => {})
   }, [])
 
   const countPretty = useMemo(() => {
