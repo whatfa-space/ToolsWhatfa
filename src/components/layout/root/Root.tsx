@@ -1,5 +1,5 @@
 'use client'
-import Header from '@/app/header'
+import Header from '@/app/[locale]/header'
 import { useJitsuPage } from '@/hooks/common/useJitsuPage'
 import { FC, PropsWithChildren } from 'react'
 import { Footer } from '../footer'

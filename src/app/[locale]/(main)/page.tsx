@@ -1,11 +1,14 @@
 import { toolPanels } from '@/config'
 import { ToolsPanel } from '@/components/biz/tools-panel'
 import { Announcement } from '@/components/biz/announcement'
+import { useTranslations } from 'next-intl'
 
-export default async function Home() {
+export default function Home() {
+  const t = useTranslations('Index')
   return (
     // <main className="flex-grow-0 flex-col items-center justify-between p-6 pt-14 fill-content">
     <>
+      <h1>{t('title')}</h1>
       {toolPanels.map((panel) => (
         <ToolsPanel key={panel.title} toolsPanel={panel} />
       ))}

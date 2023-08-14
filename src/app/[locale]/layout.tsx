@@ -7,6 +7,9 @@ import ClientProvider from '@/providers/clientProvider'
 import { clsxm } from '@/lib/helper/clsx'
 import Baidu from '@/components/baidu'
 import TToastContainer from '@/components/common/TToastContainer'
+import { useLocale } from 'next-intl'
+import { notFound } from 'next/navigation'
+
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -17,11 +20,21 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  params,
 }: {
   children: React.ReactNode
+  params: {
+    locale: string
+  }
 }) {
+  const locale = useLocale()
+
+  // Show a 404 error if the user requests an unknown locale
+  if (params.locale !== locale) {
+    notFound()
+  }
   return (
-    <html lang="zh" className="noise " data-theme="light">
+    <html lang={locale} className="noise " data-theme="light">
       <head>
         <Baidu />
       </head>
