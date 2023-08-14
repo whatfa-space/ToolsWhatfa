@@ -23,6 +23,7 @@ export default function RootLayout({
   return (
     <html lang="zh" className="noise " data-theme="light">
       <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
         <Baidu />
       </head>
 
