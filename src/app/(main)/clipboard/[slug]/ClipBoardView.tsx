@@ -1,11 +1,13 @@
 'use client'
 
 import { getClipboard, saveClipboard } from '@/services/clipboard'
-import { getInputValue } from '@/utils'
-import { FC, FormEvent, useCallback, useState } from 'react'
+import { getInputValue, url } from '@/utils'
+import { FC, FormEvent, useCallback, useEffect, useRef, useState } from 'react'
 import copy from 'copy-to-clipboard'
 import LoadingButton from '@/components/ui/loading-button'
-
+import Image from 'next/image'
+import QrCodeWithLogo2 from 'qr-code-with-logo'
+import { toast } from 'react-toastify'
 interface Props {
   initContent: string
   id: string
@@ -13,6 +15,9 @@ interface Props {
 
 const ClipBoardView: FC<Props> = ({ initContent, id }) => {
   const [content, setContent] = useState(initContent)
+
+  const codeImgRef = useRef<HTMLImageElement>(null)
+  const [loading, setLoading] = useState(true)
 
   const onChange = useCallback((event: FormEvent) => {
     const value = getInputValue(event)
@@ -36,6 +41,38 @@ const ClipBoardView: FC<Props> = ({ initContent, id }) => {
       setContent(val.content)
     })
   }, [content, id])
+
+  const generateShareUrl = useCallback(() => {
+    console.log('generateShareUrl', url(`/clipboard/${id}`).href)
+
+    return url(`/clipboard/${id}`).href
+  }, [id])
+
+  const handleCopyShareLink = useCallback(() => {
+    const success = copy(generateShareUrl())
+    if (success) {
+      toast.success('已复制')
+    }
+  }, [generateShareUrl])
+
+  const handleBind = useCallback(
+    (opt?: any) => {
+      return QrCodeWithLogo2.toImage({
+        image: codeImgRef.current,
+        nodeQrCodeOptions: {
+          margin: 1,
+        },
+        content: generateShareUrl(),
+        width: 380,
+        ...opt,
+      })
+    },
+    [generateShareUrl]
+  )
+
+  useEffect(() => {
+    handleBind({}).then(() => setLoading(false))
+  }, [handleBind])
 
   return (
     <div>
@@ -64,6 +101,24 @@ const ClipBoardView: FC<Props> = ({ initContent, id }) => {
           刷新
         </LoadingButton>
         <LoadingButton onSubmit={handleSave}>保存</LoadingButton>
+      </div>
+      <div className="flex flex-col items-center justify-center mt-5">
+        <div
+          onClick={handleCopyShareLink}
+          className="w-40 h-40 relative cursor-pointer"
+        >
+          <Image
+            style={{ display: loading ? 'none' : 'block' }}
+            className="cursor-pointer"
+            src=""
+            alt="qrcode"
+            ref={codeImgRef}
+            fill={true}
+          />
+        </div>
+        <span onClick={handleCopyShareLink} className="cursor-pointer">
+          点击复制链接
+        </span>
       </div>
     </div>
   )
