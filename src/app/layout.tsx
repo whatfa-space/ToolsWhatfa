@@ -10,9 +10,22 @@ import TToastContainer from '@/components/common/TToastContainer'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'tools whatfa',
-  description: '在线工具',
+  title: 'tools whatfa 在线工具',
+  description: 'tools whatfa 在线工具',
+  keywords: '在线工具,二维码,json,在线剪切板,共享',
   // referrer: 'strict-origin-when-cross-origin',
+  openGraph: {
+    title: 'tools whatfa',
+    description: '免费在线工具',
+    siteName: 'tools whatfa',
+    locale: 'zh_CN',
+    type: 'website',
+    url: 'https://tools.whatfa.com',
+    images: {
+      url: 'https://tools.whatfa.com/favicon.ico',
+      username: 'whatfa',
+    },
+  },
 }
 
 export default function RootLayout({

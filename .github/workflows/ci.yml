@@ -1,31 +1,30 @@
-name: deploy
-on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
-  workflow_dispatch:
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: executing remote ssh commands to develop
-        uses: appleboy/ssh-action@master
-        env:
-          UPSTASH_REDIS_REST_TOKEN: ${{secrets.UPSTASH_REDIS_REST_TOKEN}}
-          UPSTASH_REDIS_REST_URL: ${{secrets.UPSTASH_REDIS_REST_URL}}
-        #   DATABASE_HOST_NAME: ${{ secrets.DATABASE_HOST_NAME }}
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USER_NAME }}
-          password: ${{ secrets.PASSWORD }}
-          envs: UPSTASH_REDIS_REST_TOKEN,UPSTASH_REDIS_REST_URL
-          script: |
-            cd ${{ secrets.SITE_PATH }}
-            git reset --hard HEAD
-            git pull
-            pnpm i
-            pnpm lint:fix
-            pm2 delete ecosystem.config.js
-            pnpm build
-            pm2 start ecosystem.config.js
+# name: deploy
+# on:
+#   push:
+#     branches: [main]
+#   pull_request:
+#     branches: [main]
+#   workflow_dispatch:
+# jobs:
+#   deploy:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: executing remote ssh commands to develop
+#         uses: appleboy/ssh-action@master
+#         env:
+#           UPSTASH_REDIS_REST_TOKEN: ${{secrets.UPSTASH_REDIS_REST_TOKEN}}
+#           UPSTASH_REDIS_REST_URL: ${{secrets.UPSTASH_REDIS_REST_URL}}
+#         #   DATABASE_HOST_NAME: ${{ secrets.DATABASE_HOST_NAME }}
+#         with:
+#           host: ${{ secrets.HOST }}
+#           username: ${{ secrets.USER_NAME }}
+#           password: ${{ secrets.PASSWORD }}
+#           envs: UPSTASH_REDIS_REST_TOKEN,UPSTASH_REDIS_REST_URL
+#           script: |
+#             cd ${{ secrets.SITE_PATH }}
+#             git reset --hard HEAD
+#             git pull
+#             pnpm i
+#             pnpm lint:fix
+#             pnpm build
+#             pm2 reload ecosystem.config.js
