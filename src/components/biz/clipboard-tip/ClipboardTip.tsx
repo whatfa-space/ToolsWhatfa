@@ -5,7 +5,7 @@ const ClipboardTip = () => {
       <div className="collapse-content">
         <article className="prose">
           <h2>
-            在线剪切板分享工具网站 -
+            在线网络剪切板分享工具网站 -
             轻松分享、复制和保存剪贴板内容，私密剪切板空间
           </h2>
           <h3>简介</h3>
