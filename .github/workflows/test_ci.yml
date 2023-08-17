@@ -45,9 +45,7 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           envs: UPSTASH_REDIS_REST_TOKEN,UPSTASH_REDIS_REST_URL
           script: |
-            cd ${{ github.workspace }}
-            ls
-            rsync -r --delete-after --quiet ${{ github.workspace }}/.next/ ${{ secrets.SITE_PATH }}/ci/.next/
+            rsync -r ${{ github.workspace }}/.next/ ${{ secrets.SITE_PATH }}/ci/.next/
         # uses: appleboy/ssh-action@master
         # with:
         #   host: ${{ secrets.SSH_HOST }}
