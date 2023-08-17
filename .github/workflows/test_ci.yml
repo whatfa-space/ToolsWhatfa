@@ -45,7 +45,8 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           envs: UPSTASH_REDIS_REST_TOKEN,UPSTASH_REDIS_REST_URL
           script: |
-            rsync -r ${{ github.workspace }}/src ${{ secrets.SITE_PATH }}
+            rsync -r ${{ github.workspace }}/ /tmp/ci
+        # rsync -r ${{ github.workspace }}/src ${{ secrets.SITE_PATH }}
         # uses: appleboy/ssh-action@master
         # with:
         #   host: ${{ secrets.SSH_HOST }}
