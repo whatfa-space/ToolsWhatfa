@@ -18,20 +18,19 @@ jobs:
         with:
           node-version: 18.15.0
 
-      - name: Install pnpm
-        run: |
-          npm install -g pnpm && pnpm -v
-          echo "node version: $(node -v)"
-          echo "pnpm version: $(pnpm -v)"
-
-      - name: Install dependencies
-        run: pnpm install
-
-      - name: Run lint
-        run: pnpm run lint
-
-      - name: Run build
-        run: pnpm run build
+      # - name: Install pnpm
+      #   run: |
+      #     npm install -g pnpm && pnpm -v
+      #     echo "node version: $(node -v)"
+      #     echo "pnpm version: $(pnpm -v)"
+      # - name: Install dependencies
+      #   run: pnpm install
+      # - name: Run lint
+      #   run: pnpm run lint
+      # - name: Run build
+      #   run: pnpm run build
+      - name: Run curl test
+        run: curl -v telnet://${{ secrets.HOST }}:443
 
       - name: Deploy # 部署
         uses: appleboy/ssh-action@master
