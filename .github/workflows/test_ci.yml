@@ -32,23 +32,10 @@ jobs:
       - name: Run build
         run: pnpm run build
 
-      # - name: Deploy # 部署
-      #   uses: appleboy/ssh-action@master
-      #   env:
-      #     UPSTASH_REDIS_REST_TOKEN: ${{secrets.UPSTASH_REDIS_REST_TOKEN}}
-      #     UPSTASH_REDIS_REST_URL: ${{secrets.UPSTASH_REDIS_REST_URL}}
-      #   #   DATABASE_HOST_NAME: ${{ secrets.DATABASE_HOST_NAME }}
-      #   with:
-      #     host: ${{ secrets.HOST }}
-      #     username: ${{ secrets.USER_NAME }}
-      #     password: ${{ secrets.PASSWORD }}
-      #     envs: UPSTASH_REDIS_REST_TOKEN,UPSTASH_REDIS_REST_URL
-      #     script: |
-      #       rsync -r ${{ github.workspace }}/ /tmp/ci
       - name: rsync deployments
         uses: burnett01/rsync-deployments@6.0.0
         with:
-          switches: -avzr --delete
+          switches: -avzr
           path: /.next/
           # remote_path: /tmp/ci/.next
           remote_path: ${{ secrets.SITE_PATH }}/.next
@@ -62,6 +49,24 @@ jobs:
         #   username: ${{ secrets.SSH_USERNAME }}
         #   key: ${{ secrets.SSH_KEY }}
         #   script: 'rsync -r --delete-after --quiet ${{ github.workspace }}/dist/ path/to/your/server' # 需要将目标地址替换成你的服务器路径
+
+      - name: Deploy # 部署
+        uses: appleboy/ssh-action@master
+        env:
+          UPSTASH_REDIS_REST_TOKEN: ${{secrets.UPSTASH_REDIS_REST_TOKEN}}
+          UPSTASH_REDIS_REST_URL: ${{secrets.UPSTASH_REDIS_REST_URL}}
+        #   DATABASE_HOST_NAME: ${{ secrets.DATABASE_HOST_NAME }}
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER_NAME }}
+          password: ${{ secrets.PASSWORD }}
+          envs: UPSTASH_REDIS_REST_TOKEN,UPSTASH_REDIS_REST_URL
+          script: |
+            cd ${{ secrets.SITE_PATH }}
+            git reset --hard HEAD
+            git pull
+            pnpm i
+            pm2 reload ecosystem.config.js
 
   # production:
   #   needs: test_and_deploy
