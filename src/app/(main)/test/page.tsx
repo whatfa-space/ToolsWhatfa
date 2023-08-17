@@ -22,7 +22,6 @@ export default async function Test() {
 
   return (
     <div>
-      <div>hello</div>
       <TestToast />
       <TestRedis reaction={reaction} id={id} />
     </div>

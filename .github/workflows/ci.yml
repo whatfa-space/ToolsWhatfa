@@ -6,15 +6,48 @@ on:
     branches: [main]
   workflow_dispatch:
 jobs:
-  deploy:
+  build_and_deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - name: executing remote ssh commands to develop
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18.15.0
+
+      - name: Install pnpm
+        run: |
+          npm install -g pnpm && pnpm -v
+          echo "node version: $(node -v)"
+          echo "pnpm version: $(pnpm -v)"
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Run lint
+        run: pnpm run lint
+
+      - name: Run build
+        run: pnpm run build
+
+      - name: rsync deployments
+        uses: burnett01/rsync-deployments@6.0.0
+        with:
+          switches: -avzr
+          path: /.next/
+          remote_path: ${{ secrets.SITE_PATH }}/.next
+          remote_host: ${{ secrets.HOST }}
+          remote_user: ${{ secrets.USER_NAME }}
+          remote_key: ${{ secrets.SSH_KEY }}
+
+      - name: Deploy
         uses: appleboy/ssh-action@master
         env:
           UPSTASH_REDIS_REST_TOKEN: ${{secrets.UPSTASH_REDIS_REST_TOKEN}}
           UPSTASH_REDIS_REST_URL: ${{secrets.UPSTASH_REDIS_REST_URL}}
-        #   DATABASE_HOST_NAME: ${{ secrets.DATABASE_HOST_NAME }}
+
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER_NAME }}
@@ -25,6 +58,4 @@ jobs:
             git reset --hard HEAD
             git pull
             pnpm i
-            pnpm lint:fix
-            pnpm build
             pm2 reload ecosystem.config.js
