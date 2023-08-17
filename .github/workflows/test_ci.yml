@@ -29,22 +29,28 @@ jobs:
       #   run: pnpm run lint
       # - name: Run build
       #   run: pnpm run build
-      - name: Run curl test
-        run: curl -v telnet://${{ secrets.HOST }}:443
-
-      - name: Deploy # 部署
-        uses: appleboy/ssh-action@master
-        env:
-          UPSTASH_REDIS_REST_TOKEN: ${{secrets.UPSTASH_REDIS_REST_TOKEN}}
-          UPSTASH_REDIS_REST_URL: ${{secrets.UPSTASH_REDIS_REST_URL}}
-        #   DATABASE_HOST_NAME: ${{ secrets.DATABASE_HOST_NAME }}
+      # - name: Deploy # 部署
+      #   uses: appleboy/ssh-action@master
+      #   env:
+      #     UPSTASH_REDIS_REST_TOKEN: ${{secrets.UPSTASH_REDIS_REST_TOKEN}}
+      #     UPSTASH_REDIS_REST_URL: ${{secrets.UPSTASH_REDIS_REST_URL}}
+      #   #   DATABASE_HOST_NAME: ${{ secrets.DATABASE_HOST_NAME }}
+      #   with:
+      #     host: ${{ secrets.HOST }}
+      #     username: ${{ secrets.USER_NAME }}
+      #     password: ${{ secrets.PASSWORD }}
+      #     envs: UPSTASH_REDIS_REST_TOKEN,UPSTASH_REDIS_REST_URL
+      #     script: |
+      #       rsync -r ${{ github.workspace }}/ /tmp/ci
+      - name: rsync deployments
+        uses: burnett01/rsync-deployments@6.0.0
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USER_NAME }}
-          password: ${{ secrets.PASSWORD }}
-          envs: UPSTASH_REDIS_REST_TOKEN,UPSTASH_REDIS_REST_URL
-          script: |
-            rsync -r ${{ github.workspace }}/ /tmp/ci
+          switches: -avzr --delete
+          path: src/
+          remote_path: /tmp/ci/
+          remote_host: ${{ secrets.SSH_HOST }}
+          remote_user: ${{ secrets.SSH_USERNAME }}
+          remote_key: ${{ secrets.DEPLOY_KEY }}
         # rsync -r ${{ github.workspace }}/src ${{ secrets.SITE_PATH }}
         # uses: appleboy/ssh-action@master
         # with:
