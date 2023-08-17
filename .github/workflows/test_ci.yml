@@ -6,7 +6,7 @@ on:
       - test
 
 jobs:
-  test_and_deploy:
+  build_and_deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -27,16 +27,40 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Run tests
+      - name: Run lint
         run: pnpm run lint
 
-  production:
-    needs: test_and_deploy
-    runs-on: ubuntu-latest
+      - name: Run build
+        run: pnpm run lint
 
-    steps:
-      # Here you can define the steps to deploy to the production environment
-      # This could include steps to build and deploy your application
-      # For the sake of simplicity, let's assume it's just a placeholder step:
-      - name: Deploy to production
-        run: echo "Deploying to production..."
+      - name: Deploy # 部署
+        uses: appleboy/ssh-action@master
+        env:
+          UPSTASH_REDIS_REST_TOKEN: ${{secrets.UPSTASH_REDIS_REST_TOKEN}}
+          UPSTASH_REDIS_REST_URL: ${{secrets.UPSTASH_REDIS_REST_URL}}
+        #   DATABASE_HOST_NAME: ${{ secrets.DATABASE_HOST_NAME }}
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER_NAME }}
+          password: ${{ secrets.PASSWORD }}
+          envs: UPSTASH_REDIS_REST_TOKEN,UPSTASH_REDIS_REST_URL
+          script: |
+            ls
+            rsync -r --delete-after --quiet ${{ github.workspace }}/.next/ ${{ secrets.SITE_PATH }}/ci/.next
+        # uses: appleboy/ssh-action@master
+        # with:
+        #   host: ${{ secrets.SSH_HOST }}
+        #   username: ${{ secrets.SSH_USERNAME }}
+        #   key: ${{ secrets.SSH_KEY }}
+        #   script: 'rsync -r --delete-after --quiet ${{ github.workspace }}/dist/ path/to/your/server' # 需要将目标地址替换成你的服务器路径
+
+  # production:
+  #   needs: test_and_deploy
+  #   runs-on: ubuntu-latest
+
+  #   steps:
+  #     # Here you can define the steps to deploy to the production environment
+  #     # This could include steps to build and deploy your application
+  #     # For the sake of simplicity, let's assume it's just a placeholder step:
+  #     - name: Deploy to production
+  #       run: echo "Deploying to production..."
