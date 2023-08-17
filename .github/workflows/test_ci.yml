@@ -48,9 +48,9 @@ jobs:
           switches: -avzr --delete
           path: src/
           remote_path: /tmp/ci/
-          remote_host: ${{ secrets.SSH_HOST }}
-          remote_user: ${{ secrets.SSH_USERNAME }}
-          remote_key: ${{ secrets.DEPLOY_KEY }}
+          remote_host: ${{ secrets.HOST }}
+          remote_user: ${{ secrets.USER_NAME }}
+          remote_key: ${{ secrets.SSH_KEY }}
         # rsync -r ${{ github.workspace }}/src ${{ secrets.SITE_PATH }}
         # uses: appleboy/ssh-action@master
         # with:
