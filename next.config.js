@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
-import intlPlugin from 'next-intl/plugin'
-// const intlPlugin = require('next-intl/plugin')
+// import intlPlugin from 'next-intl/plugin'
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const intlPlugin = require('next-intl/plugin')
 const withNextIntl = intlPlugin(
   // This is the default (also the `src` folder is supported out of the box)
   // './i18n.ts'
