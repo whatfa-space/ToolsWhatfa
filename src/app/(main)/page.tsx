@@ -11,7 +11,7 @@ export default async function Home() {
       ))}
       <Announcement />
       {/* <article className="prose">
-        <h1>Garlic bread with cheese: What the science tells us</h1>
+        <h1>Garlic  bread with cheese: What the science tells us</h1>
         <p>
           For years parents have espoused the health benefits of eating garlic
           bread with cheese to their children, with the food earning such an
