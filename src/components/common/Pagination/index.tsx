@@ -9,7 +9,7 @@ interface IPaginationProps {
 
 //可视数字长度
 const VISIBLE_RANGE_LIMIT = 3
-const JUMP_LENGTH = 3
+const JUMP_LENGTH = 2
 
 export default function Pagination({
   page,

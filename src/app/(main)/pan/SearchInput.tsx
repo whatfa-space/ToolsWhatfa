@@ -1,7 +1,7 @@
 'use client'
 
 import { getInputValue } from '@/utils'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
 import { FormEvent, useCallback, useState } from 'react'
 interface IProps {
@@ -13,10 +13,7 @@ const getPanSearchUrl = (searchWords: string) => {
 }
 
 export default function SearchInput({ original }: IProps) {
-  const searchParams = useSearchParams()
-  const keywords = searchParams.get('keywords') || ''
-
-  const [searchWords, setSearchWords] = useState(original || keywords)
+  const [searchWords, setSearchWords] = useState(original)
   const router = useRouter()
 
   const handleJoin = useCallback(() => {

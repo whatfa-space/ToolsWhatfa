@@ -1,94 +1,33 @@
-'use client'
-
-import Pagination from '@/components/common/Pagination'
 import PanItem from './PanItem'
-import { useState } from 'react'
+import SearchInput from '../SearchInput'
+import Footer from './Footer'
+import { searchPan } from '@/services/pan'
+import { IPan } from '@/interface/pan/common'
 
-// import { useSearchParams } from 'next/navigation'
-
-// keywords
-export default function Page() {
-  // const searchParams = useSearchParams()
-
-  // const searchWords = searchParams.get('keywords')
-  // const { slug: searchWords } = params
-  // return <div>{searchWords}</div>
-  const [page, setPage] = useState(4)
-  // const [total, setTotal] = useState(10)
-  const total = 10
-  const handlePageChange = (page: number) => {
-    setPage(page)
+export default async function Page({
+  searchParams,
+}: {
+  searchParams: {
+    keywords: string
+    page: string
   }
-  const panList = [
-    {
-      title: '资源管理Q-Dir 10.4.1x32x64便携版.exe',
-      code: '2121',
-      utl: '123',
-    },
-    {
-      title: '资源管理Q-Dir 10.4.1x32x64便携版.exe',
-      code: '2121',
-      utl: 'd2fd23',
-    },
-    {
-      title: '资源管理Q-Dir 10.4.1x32x64便携版.exe',
-      code: '2121',
-      utl: 'frwfrkj',
-    },
-    {
-      title: '资源管理Q-Dir 10.4.1x32x64便携版.exe',
-      code: '2121',
-      utl: 'frwfrkj',
-    },
-    {
-      title: '资源管理Q-Dir 10.4.1x32x64便携版.exe',
-      code: '2121',
-      utl: 'frwfrkj',
-    },
-    {
-      title: '资源管理Q-Dir 10.4.1x32x64便携版.exe',
-      code: '2121',
-      utl: 'frwfrkj',
-    },
-    {
-      title: '资源管理Q-Dir 10.4.1x32x64便携版.exe',
-      code: '2121',
-      utl: 'frwfrkj',
-    },
-    {
-      title: '资源管理Q-Dir 10.4.1x32x64便携版.exe',
-      code: '2121',
-      utl: 'frwfrkj',
-    },
-    {
-      title: '资源管理Q-Dir 10.4.1x32x64便携版.exe',
-      code: '2121',
-      utl: 'frwfrkj',
-    },
-    {
-      title: '资源管理Q-Dir 10.4.1x32x64便携版.exe',
-      code: '2121',
-      utl: 'frwfrkj',
-    },
-    {
-      title: '资源管理Q-Dir 10.4.1x32x64便携版.exe',
-      code: '2121',
-      utl: 'frwfrkj',
-    },
-    {
-      title: '资源管理Q-Dir 10.4.1x32x64便携版.exe',
-      code: '2121',
-      utl: 'frwfrkj',
-    },
-  ]
+}) {
+  const { keywords, page = 1 } = searchParams || {}
+  const total = 10
+  let panList: IPan[] = []
+  const searchRes = await searchPan(keywords, Number(page))
+  panList = searchRes.panList
   return (
-    <div className="pt-3">
-      <div className="flex flex-col mx-3 gap-4">
-        {panList.map((item, idx) => (
-          <PanItem key={idx} {...item} />
-        ))}
+    <>
+      <SearchInput original={keywords || ''} />
+      <div className="pt-3">
+        <div className="flex flex-col mx-3 gap-4">
+          {panList.map((item, idx) => (
+            <PanItem key={idx} {...item} />
+          ))}
+        </div>
+        <Footer page={Number(page)} total={total} keywords={keywords} />
       </div>
-      <Pagination page={page} total={total} onChange={handlePageChange} />
-    </div>
+    </>
   )
 }
