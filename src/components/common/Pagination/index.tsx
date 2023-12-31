@@ -3,7 +3,7 @@ import { useCallback, useMemo } from 'react'
 
 interface IPaginationProps {
   page: number
-  total: number
+  totalPage: number
   onChange: (page: number) => void
 }
 
@@ -13,13 +13,16 @@ const JUMP_LENGTH = 2
 
 export default function Pagination({
   page,
-  total,
+  totalPage,
   onChange,
 }: IPaginationProps) {
   const hasPre = useMemo(() => page > 1, [page])
-  const hasNext = useMemo(() => page < total, [page, total])
+  const hasNext = useMemo(() => page < totalPage, [page, totalPage])
   const showJumpPre = useMemo(() => page - JUMP_LENGTH >= 1, [page])
-  const showJumpNext = useMemo(() => page + JUMP_LENGTH <= total, [page, total])
+  const showJumpNext = useMemo(
+    () => page + JUMP_LENGTH <= totalPage,
+    [page, totalPage]
+  )
 
   const handlePre = () => {
     if (hasPre) {
@@ -51,13 +54,13 @@ export default function Pagination({
   const visibleRange = useMemo(() => {
     if (page < VISIBLE_RANGE_LIMIT) {
       return Array.from(
-        { length: Math.min(total, VISIBLE_RANGE_LIMIT) },
+        { length: Math.min(totalPage, VISIBLE_RANGE_LIMIT) },
         (_, idx) => idx + 1
       )
-    } else if (page > total - VISIBLE_RANGE_LIMIT) {
+    } else if (page > totalPage - VISIBLE_RANGE_LIMIT) {
       return Array.from(
         { length: VISIBLE_RANGE_LIMIT },
-        (_, idx) => idx + total - VISIBLE_RANGE_LIMIT + 1
+        (_, idx) => idx + totalPage - VISIBLE_RANGE_LIMIT + 1
       )
     }
 
@@ -67,7 +70,7 @@ export default function Pagination({
       { length: VISIBLE_RANGE_LIMIT },
       (_, idx) => idx + page - half
     )
-  }, [page, total])
+  }, [page, totalPage])
 
   return (
     <div className="join flex justify-center my-5">

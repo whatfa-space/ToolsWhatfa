@@ -19,7 +19,7 @@ const requestOpt: RequestOption = {
       : '',
   interceptors: {
     response: async (res) => {
-      console.log('interceptors  response', res)
+      // console.log('interceptors  response', res)
       clientInterceptor(res)
 
       return res

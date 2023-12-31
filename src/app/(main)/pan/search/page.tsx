@@ -2,7 +2,6 @@ import PanItem from './PanItem'
 import SearchInput from '../SearchInput'
 import Footer from './Footer'
 import { searchPan } from '@/services/pan'
-import { IPan } from '@/interface/pan/common'
 
 export default async function Page({
   searchParams,
@@ -13,20 +12,22 @@ export default async function Page({
   }
 }) {
   const { keywords, page = 1 } = searchParams || {}
-  const total = 10
-  let panList: IPan[] = []
-  const searchRes = await searchPan(keywords, Number(page))
-  panList = searchRes.panList
+  const { panList, totalPage } = (await searchPan(keywords, Number(page))) || {
+    panList: [],
+    totalPage: 0,
+  }
+
   return (
     <>
       <SearchInput original={keywords || ''} />
       <div className="pt-3">
-        <div className="flex flex-col mx-3 gap-4">
+        <div className="text-center">共{totalPage}页</div>
+        <div className="flex flex-col mx-3 gap-4 mt-3">
           {panList.map((item, idx) => (
             <PanItem key={idx} {...item} />
           ))}
         </div>
-        <Footer page={Number(page)} total={total} keywords={keywords} />
+        <Footer page={Number(page)} totalPage={totalPage} keywords={keywords} />
       </div>
     </>
   )

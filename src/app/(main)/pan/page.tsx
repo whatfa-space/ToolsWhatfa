@@ -16,7 +16,6 @@ export default function Page({
   return (
     <>
       <SearchInput original={searchParams?.keywords || ''} />
-      <div>{searchParams?.keywords || 'searchParams'}</div>
     </>
   )
 }

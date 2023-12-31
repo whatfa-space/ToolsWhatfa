@@ -3,7 +3,7 @@
 import { getInputValue } from '@/utils'
 import { useRouter } from 'next/navigation'
 
-import { FormEvent, useCallback, useState } from 'react'
+import { FormEvent, KeyboardEventHandler, useCallback, useState } from 'react'
 interface IProps {
   original: string
 }
@@ -25,6 +25,15 @@ export default function SearchInput({ original }: IProps) {
     setSearchWords(value)
   }, [])
 
+  const onKeyUp = useCallback<KeyboardEventHandler<HTMLInputElement>>(
+    (e) => {
+      if (e.key === 'Enter') {
+        handleJoin()
+      }
+    },
+    [handleJoin]
+  )
+
   return (
     <div className="flex max-w-md m-auto">
       <input
@@ -33,6 +42,7 @@ export default function SearchInput({ original }: IProps) {
         type="text"
         className="input input-bordered focus:outline-0 rounded-r-none border-r-0 w-full"
         placeholder="请输入关键词"
+        onKeyUp={onKeyUp}
       />
       <button
         onClick={handleJoin}

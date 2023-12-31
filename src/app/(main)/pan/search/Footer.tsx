@@ -6,10 +6,10 @@ import { useCallback } from 'react'
 
 interface IFooterProps {
   page: number
-  total: number
+  totalPage: number
   keywords: string
 }
-export default function Footer({ page, total, keywords }: IFooterProps) {
+export default function Footer({ page, totalPage, keywords }: IFooterProps) {
   const router = useRouter()
   const handlePageChange = useCallback(
     (p: number) => {
@@ -17,5 +17,7 @@ export default function Footer({ page, total, keywords }: IFooterProps) {
     },
     [keywords, router]
   )
-  return <Pagination page={page} total={total} onChange={handlePageChange} />
+  return (
+    <Pagination page={page} totalPage={totalPage} onChange={handlePageChange} />
+  )
 }
