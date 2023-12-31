@@ -19,6 +19,12 @@ export const toolPanels: IToolsPanel[] = [
         icon: 'faClipboard',
       },
       {
+        title: '网盘搜索',
+        desc: '网盘资源在线搜索',
+        link: '/pan',
+        icon: 'faClipboard',
+      },
+      {
         title: 'wait...',
         desc: 'wait...',
         icon: 'faCode',
