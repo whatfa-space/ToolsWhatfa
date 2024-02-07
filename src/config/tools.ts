@@ -19,6 +19,12 @@ export const toolPanels: IToolsPanel[] = [
         icon: 'faClipboard',
       },
       {
+        title: '临时邮箱',
+        desc: '免费在线临时邮箱',
+        link: '/email',
+        icon: 'faVoicemail',
+      },
+      {
         title: 'wait...',
         desc: 'wait...',
         icon: 'faCode',

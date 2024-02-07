@@ -8,7 +8,7 @@ export const Root: FC<PropsWithChildren> = ({ children }) => {
   useJitsuPage()
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <main className="p-6 pt-14 fill-content">{children}</main>
       <Footer />
     </>

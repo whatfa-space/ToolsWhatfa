@@ -10,7 +10,8 @@
     "start:server": "tsc --project tsconfig.server.json && node dist/server.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "node:auto":"n auto"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [

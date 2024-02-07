@@ -37,6 +37,11 @@ npm version patch
 
 ```
 
+## run  redis
+```bash
+redis-server
+```
+
 ## TODO
 
 wait list
