@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { BackBtn } from '@/components/biz/back-btn'
 import { usePathname, useRouter } from 'next/navigation'
+import { UserButton } from '@clerk/nextjs'
 import Menu from '@/components/layout/menu'
 
 export default function Header() {
@@ -61,6 +62,10 @@ export default function Header() {
         <Menu />
         <div className="text-xl md:text-2xl flex-1 text-center">
           ToolsWhatfa - 免费工具
+        </div>
+        <div className="">
+          <UserButton afterSignOutUrl="/" />
+          <span>user</span>
         </div>
         {showBackBtn && <BackBtn onClick={handleBack} />}
       </header>
