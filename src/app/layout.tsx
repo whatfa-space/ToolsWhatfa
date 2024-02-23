@@ -7,6 +7,7 @@ import ClientProvider from '@/providers/clientProvider'
 import { clsxm } from '@/lib/helper/clsx'
 import Baidu from '@/components/baidu'
 import TToastContainer from '@/components/common/TToastContainer'
+import Clarity from '@/components/clarity'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -38,6 +39,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <Baidu />
+        <Clarity />
       </head>
 
       <body className={clsxm(inter.className, 'font-mono')}>
